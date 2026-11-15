@@ -1,0 +1,72 @@
+{
+  "schema": "robotics-bench-primary-embodiment-model/1",
+  "version": "unitree-go2-pbr-v1",
+  "model_id": "unitree-go2",
+  "display_name": "Unitree Go2",
+  "event_contract_value": "Unitree Go2",
+  "role": "primary_embodiment_model",
+  "source_project": "MVPs/embody-sim",
+  "asset_sha256": "ad96724bbc91c4721fb8d6de9668a50b4beee581684107f4e6fe2820cc901f36",
+  "source_urdf_sha256": "7d19fe48e2e689ee1a032ab99f2a4a8b671d87e73de48d3e65811682a5b48b9e",
+  "license": "BSD-3-Clause",
+  "units": "metres",
+  "coordinate_system": "glTF 2.0 right-handed, Y up",
+  "link_count": 42,
+  "joint_count": 41,
+  "controllable_joint_count": 12,
+  "mesh_count": 33,
+  "pbr_material_groups": [
+    "painted-shell",
+    "white-polymer",
+    "black-polymer",
+    "sensor-glass",
+    "machined-metal",
+    "rubber-feet",
+    "black-gasket"
+  ],
+  "visual_preview": true,
+  "kinematic_preview": true,
+  "animation": {
+    "clip": "Walk_InPlace",
+    "duration_seconds": 1.0,
+    "track_count": 8,
+    "mode": "looping_kinematic_preview_only",
+    "physics_authority": false
+  },
+  "physics_authority": false,
+  "files": {
+    "preview_model": "model/unitree-go2.glb",
+    "articulation": "model/unitree-go2.articulation.json",
+    "validation": "model/unitree-go2.validation.json",
+    "preview_image": "preview/unitree-go2-preview.png",
+    "license": "LICENSE.txt",
+    "source": "SOURCE.json"
+  },
+  "platform_registration": {
+    "resource_kind": "robot_model",
+    "resource_name": "Unitree Go2 主具身本体",
+    "resource_version": "unitree-go2-pbr-v1",
+    "preview_model": {
+      "purpose": "preview_model",
+      "media_type": "model/gltf-binary",
+      "path": "model/unitree-go2.glb"
+    },
+    "preview_image": {
+      "purpose": "preview_image",
+      "media_type": "image/png",
+      "path": "preview/unitree-go2-preview.png"
+    },
+    "source_archive": {
+      "purpose": "source",
+      "media_type": "application/zip",
+      "path": "robotics-bench-primary-go2-v1-20261028.zip"
+    }
+  },
+  "excluded": [
+    "complete_competition_scene",
+    "competition_layout_coordinates",
+    "mujoco_physics_model",
+    "locomotion_policy",
+    "organizer_validation_reports"
+  ]
+}

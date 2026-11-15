@@ -1,0 +1,72 @@
+{
+  "schema": "robotics-bench-public-detection-target/1",
+  "id": "life_detection_football",
+  "kind": "life_detection_target_proxy",
+  "display_name": "Football life-detection proxy",
+  "semantic_role": "life_detection_target",
+  "class_labels": [
+    "football",
+    "soccer_ball",
+    "life_detection_target"
+  ],
+  "proxy_for": "life_body",
+  "contains_human_geometry": false,
+  "units": "metres",
+  "glb_coordinate_system": "right-handed, Y up",
+  "mujoco_coordinate_system": "right-handed XYZ, Z up",
+  "origin": "ground_center",
+  "glb_local_aabb_m": {
+    "min": [
+      -0.10998576879501343,
+      0,
+      -0.10999999940395355
+    ],
+    "max": [
+      0.10998576879501343,
+      0.2199999988079071,
+      0.10999999195337296
+    ],
+    "dimensions": [
+      0.21997153759002686,
+      0.2199999988079071,
+      0.2199999913573265
+    ]
+  },
+  "physical_specification": {
+    "nominal_type": "size_5_football",
+    "radius_m": 0.11,
+    "diameter_m": 0.22,
+    "mass_kg": 0.43,
+    "dynamic": true
+  },
+  "visual_preview": "preview.glb",
+  "mujoco_source": "model.xml",
+  "mujoco_archive": "model.mjz",
+  "collision_profile": "dynamic_sphere",
+  "collision_geom_count": 1,
+  "placement_disclosure": "No competition placement coordinates are included.",
+  "visual_preview_sha256": "dd36b2ee19b8de1bcade0cb3f95ee80bf73d163c86b96da3431738d38f921594",
+  "visual_preview_presentation": {
+    "origin": "aabb_center",
+    "physics_authority": false,
+    "transform_scope": "glb_top_level_preview_root_only",
+    "source_aabb": {
+      "min": [
+        -0.10998576879501343,
+        0,
+        -0.10999999940395355
+      ],
+      "max": [
+        0.10998576879501343,
+        0.2199999988079071,
+        0.10999999195337296
+      ]
+    },
+    "presentation_offset": [
+      0,
+      -0.10999999940395355,
+      3.725290298461914e-9
+    ],
+    "file_explorer_profile": "roboticsBench.upAxis=Y"
+  }
+}

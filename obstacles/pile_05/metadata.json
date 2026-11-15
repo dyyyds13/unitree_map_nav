@@ -1,0 +1,59 @@
+{
+  "schema": "robotics-bench-public-obstacle/1",
+  "id": "pile_05",
+  "kind": "rubble_pile",
+  "units": "metres",
+  "coordinate_system": "right-handed XYZ, Z up",
+  "origin": "ground_center",
+  "local_aabb_m": {
+    "min": [
+      -1.0550503730773926,
+      -0.7234280109405518,
+      0
+    ],
+    "max": [
+      1.0550503730773926,
+      0.7234280109405518,
+      0.47843749821186066
+    ],
+    "dimensions": [
+      2.110100746154785,
+      1.4468560218811035,
+      0.47843749821186066
+    ]
+  },
+  "visual_preview": "preview.glb",
+  "mujoco_source": "model.xml",
+  "mujoco_archive": "model.mjz",
+  "collision_profile": "convex_mesh_public",
+  "collision_geom_count": 100,
+  "external_collision_mesh_count": 100,
+  "visual_preview_sha256": "81492291cc64bf4ab76b0a35636e32e538b90669fbfac2b81fff7345a2f145b6",
+  "visual_preview_presentation": {
+    "origin": "aabb_center",
+    "physics_authority": false,
+    "transform_scope": "glb_top_level_preview_root_only",
+    "source_aabb": {
+      "min": [
+        9.504480361938477,
+        0.5411413908004761,
+        -0.02735881507396698
+      ],
+      "max": [
+        11.614581108093262,
+        1.9879974126815796,
+        0.4510786831378937
+      ]
+    },
+    "presentation_offset": [
+      -10.559530258178711,
+      -1.2645694017410278,
+      -0.21185994148254395
+    ],
+    "source_up_axis": "Z",
+    "file_up_axis": "Y",
+    "file_explorer_profile": "roboticsBench.upAxis=Y"
+  },
+  "visual_preview_coordinate_system": "glTF 2.0 right-handed, Y up",
+  "visual_preview_material_system": "glTF 2.0 PBR metallic-roughness"
+}

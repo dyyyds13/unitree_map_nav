@@ -1,0 +1,35 @@
+{
+  "schema": "robotics-bench-participant-resource-selection/1",
+  "target_robot": "Unitree Go2",
+  "scene_distribution": {
+    "visual_model_included": true,
+    "visual_model": "scene/visual/competition-course.glb",
+    "visual_model_embedded_robot": false,
+    "physics_model": "scene/mujoco/competition-course.mjb",
+    "split_collision_meshes_distributed": false
+  },
+  "obstacle_model_count": 9,
+  "obstacle_models": {
+    "rock_piles": [
+      "pile_01",
+      "pile_02",
+      "pile_03",
+      "pile_04",
+      "pile_05"
+    ],
+    "tunnels": [
+      "tunnel_1",
+      "tunnel_2",
+      "tunnel_3"
+    ],
+    "ramp": [
+      "ramp_assembly"
+    ]
+  },
+  "life_detection_target": "life-detection/football",
+  "excluded_candidate_obstacles": [
+    "s_curve",
+    "puddle",
+    "independent_boulder"
+  ]
+}

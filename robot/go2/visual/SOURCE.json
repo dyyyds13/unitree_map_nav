@@ -1,0 +1,35 @@
+{
+  "schema": "robotics-bench-primary-model-source/1",
+  "source_project": "MVPs/embody-sim",
+  "source_asset": "reviewed resource asset unitree-go2-walk.glb",
+  "source_asset_sha256": "ad96724bbc91c4721fb8d6de9668a50b4beee581684107f4e6fe2820cc901f36",
+  "source_validation": "apps/web/public/models/unitree-go2.validation.json",
+  "source_articulation": "apps/web/public/models/unitree-go2.articulation.json",
+  "upstream": {
+    "commit": "5994d4faef0a9cadd3287f8de0199a67eeb2a259",
+    "license": "BSD-3-Clause",
+    "physics_model_reference": "https://github.com/unitreerobotics/unitree_mujoco/tree/1eb6642e3f3fdfb7fb13a9794fd6a2dd93ea0e7d/unitree_robots/go2",
+    "repository": "https://github.com/unitreerobotics/unitree_ros",
+    "scope": "kinematic catalog preview plus two separate MuJoCo physics baselines; platform procedural trot is not a vendor locomotion policy",
+    "source_file_sha256": {
+      "dae/base.dae": "e52bebbb5c7ff1f6aedee620c9b5b349f6e965360ecc63a9bb743eeff2d0be64",
+      "dae/calf.dae": "29872fa1a435b92bc2b395fdfa7f0aee26101db3c494681896bd4ef24ee7883c",
+      "dae/calf_mirror.dae": "79c66be7ed06760bd5001c067a1fb0ac517f639d8b1a5f89be471903b3f359e1",
+      "dae/foot.dae": "ffbd95fd641866ce9bd277aa249b92dafc9148d70131fa2c52709a35ce5b710b",
+      "dae/hip.dae": "8735e10617afe252cef0844c1d139d15bc6d4c653660d742fea9fe05c2704d8f",
+      "dae/thigh.dae": "a622381ae308897ff143b8bbf02f075457c342b22984205040424a5a983246fa",
+      "dae/thigh_mirror.dae": "c7bae0b0565c2aa4b7cc15a538d795e9153e0f10c821cc18429e92693172bdc6",
+      "urdf/go2_description.urdf": "7d19fe48e2e689ee1a032ab99f2a4a8b671d87e73de48d3e65811682a5b48b9e"
+    }
+  },
+  "license": "BSD-3-Clause",
+  "derivation": "The reviewed GLB is derived from the verified Unitree source with an explicit URDF Z-up to glTF Y-up conversion root. Robotics Bench adds packaging, a preview PNG, role metadata, and a deterministic presentation-only Walk_InPlace quaternion clip over eight leg joints.",
+  "boundaries": {
+    "visual_and_kinematic_preview": true,
+    "physics_authority": false,
+    "vendor_measured_pbr": false,
+    "competition_policy_included": false,
+    "walk_animation_physics_authority": false,
+    "walk_animation_vendor_authored": false
+  }
+}

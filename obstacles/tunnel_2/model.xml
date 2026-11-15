@@ -1,0 +1,57 @@
+<mujoco model="robotics_bench_tunnel_2">
+  <compiler angle="radian" meshdir="assets" />
+  <asset>
+    <mesh name="mesh_tunnel2_segment_00" file="tunnel2_segment_00.obj" />
+    <mesh name="mesh_tunnel2_segment_01" file="tunnel2_segment_01.obj" />
+    <mesh name="mesh_tunnel2_segment_02" file="tunnel2_segment_02.obj" />
+    <mesh name="mesh_tunnel2_segment_03" file="tunnel2_segment_03.obj" />
+    <mesh name="mesh_tunnel2_segment_04" file="tunnel2_segment_04.obj" />
+    <mesh name="mesh_tunnel2_segment_05" file="tunnel2_segment_05.obj" />
+    <mesh name="mesh_tunnel2_segment_06" file="tunnel2_segment_06.obj" />
+    <mesh name="mesh_tunnel2_segment_07" file="tunnel2_segment_07.obj" />
+    <mesh name="mesh_tunnel2_segment_08" file="tunnel2_segment_08.obj" />
+    <mesh name="mesh_tunnel2_segment_09" file="tunnel2_segment_09.obj" />
+    <mesh name="mesh_tunnel2_segment_10" file="tunnel2_segment_10.obj" />
+    <mesh name="mesh_tunnel2_segment_11" file="tunnel2_segment_11.obj" />
+    <mesh name="mesh_tunnel2_segment_12" file="tunnel2_segment_12.obj" />
+    <mesh name="mesh_tunnel2_segment_13" file="tunnel2_segment_13.obj" />
+    <mesh name="mesh_tunnel2_segment_14" file="tunnel2_segment_14.obj" />
+    <mesh name="mesh_tunnel2_segment_15" file="tunnel2_segment_15.obj" />
+    <mesh name="mesh_tunnel2_segment_16" file="tunnel2_segment_16.obj" />
+    <mesh name="mesh_tunnel2_segment_17" file="tunnel2_segment_17.obj" />
+    <mesh name="mesh_tunnel2_segment_18" file="tunnel2_segment_18.obj" />
+    <mesh name="mesh_tunnel2_segment_19" file="tunnel2_segment_19.obj" />
+    <mesh name="mesh_tunnel2_segment_20" file="tunnel2_segment_20.obj" />
+    <mesh name="mesh_tunnel2_segment_21" file="tunnel2_segment_21.obj" />
+    <mesh name="mesh_tunnel2_segment_22" file="tunnel2_segment_22.obj" />
+    <mesh name="mesh_tunnel2_segment_23" file="tunnel2_segment_23.obj" />
+  </asset>
+  <worldbody>
+    <body name="tunnel_2" pos="0 0 0">
+      <geom name="tunnel2_segment_00" type="mesh" mesh="mesh_tunnel2_segment_00" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="tunnel2_segment_01" type="mesh" mesh="mesh_tunnel2_segment_01" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="tunnel2_segment_02" type="mesh" mesh="mesh_tunnel2_segment_02" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="tunnel2_segment_03" type="mesh" mesh="mesh_tunnel2_segment_03" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="tunnel2_segment_04" type="mesh" mesh="mesh_tunnel2_segment_04" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="tunnel2_segment_05" type="mesh" mesh="mesh_tunnel2_segment_05" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="tunnel2_segment_06" type="mesh" mesh="mesh_tunnel2_segment_06" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="tunnel2_segment_07" type="mesh" mesh="mesh_tunnel2_segment_07" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="tunnel2_segment_08" type="mesh" mesh="mesh_tunnel2_segment_08" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="tunnel2_segment_09" type="mesh" mesh="mesh_tunnel2_segment_09" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="tunnel2_segment_10" type="mesh" mesh="mesh_tunnel2_segment_10" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="tunnel2_segment_11" type="mesh" mesh="mesh_tunnel2_segment_11" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="tunnel2_segment_12" type="mesh" mesh="mesh_tunnel2_segment_12" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="tunnel2_segment_13" type="mesh" mesh="mesh_tunnel2_segment_13" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="tunnel2_segment_14" type="mesh" mesh="mesh_tunnel2_segment_14" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="tunnel2_segment_15" type="mesh" mesh="mesh_tunnel2_segment_15" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="tunnel2_segment_16" type="mesh" mesh="mesh_tunnel2_segment_16" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="tunnel2_segment_17" type="mesh" mesh="mesh_tunnel2_segment_17" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="tunnel2_segment_18" type="mesh" mesh="mesh_tunnel2_segment_18" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="tunnel2_segment_19" type="mesh" mesh="mesh_tunnel2_segment_19" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="tunnel2_segment_20" type="mesh" mesh="mesh_tunnel2_segment_20" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="tunnel2_segment_21" type="mesh" mesh="mesh_tunnel2_segment_21" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="tunnel2_segment_22" type="mesh" mesh="mesh_tunnel2_segment_22" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="tunnel2_segment_23" type="mesh" mesh="mesh_tunnel2_segment_23" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+    </body>
+  </worldbody>
+</mujoco>

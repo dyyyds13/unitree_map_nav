@@ -1,0 +1,30 @@
+{
+  "scope": "local modified entry-ramp original-start verification; not official score or full pipe exit",
+  "entry_pass": true,
+  "full_course_pass": false,
+  "source_summary": "summary.json",
+  "source_trajectory": "trajectory.jsonl",
+  "entered_pipe_timestamp": 197.80000000021636,
+  "exit_guard_timestamp": 203.0000000002412,
+  "final_one_second_net_speed_mps": 0.0003945866394663192,
+  "prior_stages_completed": [
+    "L1_ascent",
+    "L1_descent",
+    "S_curve",
+    "dead_end",
+    "rubble"
+  ],
+  "obstacle_contacts": 0,
+  "fell": false,
+  "water_entries": 0,
+  "out_of_bounds": 0,
+  "simulation_seconds": 260.00000000051335,
+  "wall_seconds": 311.59385936299986,
+  "recording": {
+    "video": false,
+    "raw": false,
+    "physics": false,
+    "snapshots": false
+  },
+  "remaining": "east22cm descent and subsequent target/finish stages remain unvalidated"
+}

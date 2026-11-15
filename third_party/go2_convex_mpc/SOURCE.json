@@ -1,0 +1,17 @@
+{
+  "repository": "https://github.com/elijah-waichong-chan/go2-convex-mpc",
+  "commit": "1c63c6a762779887ab0431fd60db681dede6cb32",
+  "upstream_sha256": {
+    "LICENSE": "4a29b813c2876703d52b0537b591876bf8d11c342a13f94745e0c618f8b58e10",
+    "README.md": "a4caf7438f39fa5fe0787753d920c7df7af00b30972cd931b9314111b8c99ce1",
+    "src/convex_mpc/__init__.py": "eb4e72c7ca2b3242527b39bd840ced588631e97404cea0e72e3131406cdeec59",
+    "src/convex_mpc/centroidal_mpc.py": "16b3aeeab456207159ccf9c5467a75e7c82b2ce3c3a76c1cb6995e69d7337f61",
+    "src/convex_mpc/com_trajectory.py": "cb7612198b1e3fe60b967e0dd1dd9171685e1222ff5ebdaa68f376e01d98659d",
+    "src/convex_mpc/gait.py": "0e4a6f2d3d9768903ec0976c8c8a21d44cfa8030f835d24aa0334e6941b0c56b",
+    "src/convex_mpc/go2_robot_data.py": "9e56d590ac5d6430e53b7190c6afa774aab48eae8247e99ce37a7c325781cdd9",
+    "src/convex_mpc/leg_controller.py": "13dc3f0168bb2647d1d3a5d7e65c6d0c3db77f6f1c1c6a1061a16e2e8a1e74ee",
+    "src/convex_mpc/mujoco_model.py": "a8668f3507543abf3135b28e8c573c6127c3db6d5e03a2e5c93f28798a18236e",
+    "examples/ex00_demo.py": "faf1be75bad36abee8ac13024bab970e48a7e6c97bd4c2fee8914d4d816b8eee",
+    "examples/ex02_trot_forward.py": "2043c4606c921cb0db44e062288bbe1e32d1a95e079aec6fe1df78f3d1139d0b"
+  }
+}

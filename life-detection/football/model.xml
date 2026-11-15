@@ -1,0 +1,13 @@
+<mujoco model="robotics_bench_life_detection_football">
+  <compiler angle="radian" />
+  <asset>
+    <texture name="football_checker" type="2d" builtin="checker" rgb1="0.02 0.02 0.02" rgb2="0.92 0.92 0.9" width="512" height="512" />
+    <material name="football_pattern" texture="football_checker" texrepeat="5 3" specular="0.25" roughness="0.62" />
+  </asset>
+  <worldbody>
+    <body name="life_detection_football" pos="0 0 0.11">
+      <freejoint name="life_detection_football_free" />
+      <geom name="life_detection_football_collision" type="sphere" size="0.11" mass="0.43" material="football_pattern" friction="0.8 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" />
+    </body>
+  </worldbody>
+</mujoco>

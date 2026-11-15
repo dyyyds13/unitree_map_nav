@@ -1,0 +1,16 @@
+{
+  "assetSha256": "0663ad89d3178a5b019ab12b4bfb83bfb0413062dbcb3f26cc78ae6df0cd6c6b",
+  "animation": {
+    "name": "Walk_InPlace",
+    "durationSeconds": 1.0,
+    "quaternionTrackCount": 12,
+    "physicsAuthority": false
+  },
+  "coordinateSystem": "glTF 2.0 right-handed, Y up",
+  "jointCount": 41,
+  "linkCount": 42,
+  "schemaVersion": 1,
+  "sourceSha256": "7d19fe48e2e689ee1a032ab99f2a4a8b671d87e73de48d3e65811682a5b48b9e",
+  "status": "ready",
+  "warnings": []
+}

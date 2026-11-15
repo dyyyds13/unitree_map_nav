@@ -1,0 +1,1238 @@
+{
+  "embodimentId": "unitree-go2",
+  "joints": [
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "childLink": "Head_upper",
+      "limit": null,
+      "mimic": null,
+      "name": "Head_upper_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xyz": [
+          0.285,
+          0.0,
+          0.01
+        ]
+      },
+      "parentLink": "base",
+      "type": "fixed"
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "childLink": "Head_lower",
+      "limit": null,
+      "mimic": null,
+      "name": "Head_lower_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xyz": [
+          0.008,
+          0.0,
+          -0.07
+        ]
+      },
+      "parentLink": "Head_upper",
+      "type": "fixed"
+    },
+    {
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "childLink": "FL_hip",
+      "limit": {
+        "lower": -1.0472,
+        "upper": 1.0472
+      },
+      "mimic": null,
+      "name": "FL_hip_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xyz": [
+          0.1934,
+          0.0465,
+          0.0
+        ]
+      },
+      "parentLink": "base",
+      "type": "revolute"
+    },
+    {
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "childLink": "FL_hip_rotor",
+      "limit": null,
+      "mimic": null,
+      "name": "FL_hip_rotor_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xyz": [
+          0.11215,
+          0.04675,
+          0.0
+        ]
+      },
+      "parentLink": "base",
+      "type": "fixed"
+    },
+    {
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "childLink": "FL_thigh",
+      "limit": {
+        "lower": -1.5708,
+        "upper": 3.4907
+      },
+      "mimic": null,
+      "name": "FL_thigh_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xyz": [
+          0.0,
+          0.0955,
+          0.0
+        ]
+      },
+      "parentLink": "FL_hip",
+      "type": "revolute"
+    },
+    {
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "childLink": "FL_thigh_rotor",
+      "limit": null,
+      "mimic": null,
+      "name": "FL_thigh_rotor_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xyz": [
+          0.0,
+          -0.00015,
+          0.0
+        ]
+      },
+      "parentLink": "FL_hip",
+      "type": "fixed"
+    },
+    {
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "childLink": "FL_calf",
+      "limit": {
+        "lower": -2.7227,
+        "upper": -0.83776
+      },
+      "mimic": null,
+      "name": "FL_calf_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xyz": [
+          0.0,
+          0.0,
+          -0.213
+        ]
+      },
+      "parentLink": "FL_thigh",
+      "type": "revolute"
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "childLink": "FL_calflower",
+      "limit": null,
+      "mimic": null,
+      "name": "FL_calflower_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.05,
+          0.0
+        ],
+        "xyz": [
+          0.02,
+          0.0,
+          -0.148
+        ]
+      },
+      "parentLink": "FL_calf",
+      "type": "fixed"
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "childLink": "FL_calflower1",
+      "limit": null,
+      "mimic": null,
+      "name": "FL_calflower1_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.48,
+          0.0
+        ],
+        "xyz": [
+          -0.01,
+          0.0,
+          -0.04
+        ]
+      },
+      "parentLink": "FL_calflower",
+      "type": "fixed"
+    },
+    {
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "childLink": "FL_calf_rotor",
+      "limit": null,
+      "mimic": null,
+      "name": "FL_calf_rotor_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xyz": [
+          0.0,
+          -0.03235,
+          0.0
+        ]
+      },
+      "parentLink": "FL_thigh",
+      "type": "fixed"
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "childLink": "FL_foot",
+      "limit": null,
+      "mimic": null,
+      "name": "FL_foot_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xyz": [
+          0.0,
+          0.0,
+          -0.213
+        ]
+      },
+      "parentLink": "FL_calf",
+      "type": "fixed"
+    },
+    {
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "childLink": "FR_hip",
+      "limit": {
+        "lower": -1.0472,
+        "upper": 1.0472
+      },
+      "mimic": null,
+      "name": "FR_hip_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xyz": [
+          0.1934,
+          -0.0465,
+          0.0
+        ]
+      },
+      "parentLink": "base",
+      "type": "revolute"
+    },
+    {
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "childLink": "FR_hip_rotor",
+      "limit": null,
+      "mimic": null,
+      "name": "FR_hip_rotor_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xyz": [
+          0.11215,
+          -0.04675,
+          0.0
+        ]
+      },
+      "parentLink": "base",
+      "type": "fixed"
+    },
+    {
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "childLink": "FR_thigh",
+      "limit": {
+        "lower": -1.5708,
+        "upper": 3.4907
+      },
+      "mimic": null,
+      "name": "FR_thigh_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xyz": [
+          0.0,
+          -0.0955,
+          0.0
+        ]
+      },
+      "parentLink": "FR_hip",
+      "type": "revolute"
+    },
+    {
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "childLink": "FR_thigh_rotor",
+      "limit": null,
+      "mimic": null,
+      "name": "FR_thigh_rotor_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xyz": [
+          0.0,
+          0.00015,
+          0.0
+        ]
+      },
+      "parentLink": "FR_hip",
+      "type": "fixed"
+    },
+    {
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "childLink": "FR_calf",
+      "limit": {
+        "lower": -2.7227,
+        "upper": -0.83776
+      },
+      "mimic": null,
+      "name": "FR_calf_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xyz": [
+          0.0,
+          0.0,
+          -0.213
+        ]
+      },
+      "parentLink": "FR_thigh",
+      "type": "revolute"
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "childLink": "FR_calflower",
+      "limit": null,
+      "mimic": null,
+      "name": "FR_calflower_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.05,
+          0.0
+        ],
+        "xyz": [
+          0.02,
+          0.0,
+          -0.148
+        ]
+      },
+      "parentLink": "FR_calf",
+      "type": "fixed"
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "childLink": "FR_calflower1",
+      "limit": null,
+      "mimic": null,
+      "name": "FR_calflower1_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.48,
+          0.0
+        ],
+        "xyz": [
+          -0.01,
+          0.0,
+          -0.04
+        ]
+      },
+      "parentLink": "FR_calflower",
+      "type": "fixed"
+    },
+    {
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "childLink": "FR_calf_rotor",
+      "limit": null,
+      "mimic": null,
+      "name": "FR_calf_rotor_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xyz": [
+          0.0,
+          0.03235,
+          0.0
+        ]
+      },
+      "parentLink": "FR_thigh",
+      "type": "fixed"
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "childLink": "FR_foot",
+      "limit": null,
+      "mimic": null,
+      "name": "FR_foot_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xyz": [
+          0.0,
+          0.0,
+          -0.213
+        ]
+      },
+      "parentLink": "FR_calf",
+      "type": "fixed"
+    },
+    {
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "childLink": "RL_hip",
+      "limit": {
+        "lower": -1.0472,
+        "upper": 1.0472
+      },
+      "mimic": null,
+      "name": "RL_hip_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xyz": [
+          -0.1934,
+          0.0465,
+          0.0
+        ]
+      },
+      "parentLink": "base",
+      "type": "revolute"
+    },
+    {
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "childLink": "RL_hip_rotor",
+      "limit": null,
+      "mimic": null,
+      "name": "RL_hip_rotor_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xyz": [
+          -0.11215,
+          0.04675,
+          0.0
+        ]
+      },
+      "parentLink": "base",
+      "type": "fixed"
+    },
+    {
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "childLink": "RL_thigh",
+      "limit": {
+        "lower": -0.5236,
+        "upper": 4.5379
+      },
+      "mimic": null,
+      "name": "RL_thigh_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xyz": [
+          0.0,
+          0.0955,
+          0.0
+        ]
+      },
+      "parentLink": "RL_hip",
+      "type": "revolute"
+    },
+    {
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "childLink": "RL_thigh_rotor",
+      "limit": null,
+      "mimic": null,
+      "name": "RL_thigh_rotor_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xyz": [
+          0.0,
+          -0.00015,
+          0.0
+        ]
+      },
+      "parentLink": "RL_hip",
+      "type": "fixed"
+    },
+    {
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "childLink": "RL_calf",
+      "limit": {
+        "lower": -2.7227,
+        "upper": -0.83776
+      },
+      "mimic": null,
+      "name": "RL_calf_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xyz": [
+          0.0,
+          0.0,
+          -0.213
+        ]
+      },
+      "parentLink": "RL_thigh",
+      "type": "revolute"
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "childLink": "RL_calflower",
+      "limit": null,
+      "mimic": null,
+      "name": "RL_calflower_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.05,
+          0.0
+        ],
+        "xyz": [
+          0.02,
+          0.0,
+          -0.148
+        ]
+      },
+      "parentLink": "RL_calf",
+      "type": "fixed"
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "childLink": "RL_calflower1",
+      "limit": null,
+      "mimic": null,
+      "name": "RL_calflower1_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.48,
+          0.0
+        ],
+        "xyz": [
+          -0.01,
+          0.0,
+          -0.04
+        ]
+      },
+      "parentLink": "RL_calflower",
+      "type": "fixed"
+    },
+    {
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "childLink": "RL_calf_rotor",
+      "limit": null,
+      "mimic": null,
+      "name": "RL_calf_rotor_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xyz": [
+          0.0,
+          -0.03235,
+          0.0
+        ]
+      },
+      "parentLink": "RL_thigh",
+      "type": "fixed"
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "childLink": "RL_foot",
+      "limit": null,
+      "mimic": null,
+      "name": "RL_foot_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xyz": [
+          0.0,
+          0.0,
+          -0.213
+        ]
+      },
+      "parentLink": "RL_calf",
+      "type": "fixed"
+    },
+    {
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "childLink": "RR_hip",
+      "limit": {
+        "lower": -1.0472,
+        "upper": 1.0472
+      },
+      "mimic": null,
+      "name": "RR_hip_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xyz": [
+          -0.1934,
+          -0.0465,
+          0.0
+        ]
+      },
+      "parentLink": "base",
+      "type": "revolute"
+    },
+    {
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "childLink": "RR_hip_rotor",
+      "limit": null,
+      "mimic": null,
+      "name": "RR_hip_rotor_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xyz": [
+          -0.11215,
+          -0.04675,
+          0.0
+        ]
+      },
+      "parentLink": "base",
+      "type": "fixed"
+    },
+    {
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "childLink": "RR_thigh",
+      "limit": {
+        "lower": -0.5236,
+        "upper": 4.5379
+      },
+      "mimic": null,
+      "name": "RR_thigh_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xyz": [
+          0.0,
+          -0.0955,
+          0.0
+        ]
+      },
+      "parentLink": "RR_hip",
+      "type": "revolute"
+    },
+    {
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "childLink": "RR_thigh_rotor",
+      "limit": null,
+      "mimic": null,
+      "name": "RR_thigh_rotor_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xyz": [
+          0.0,
+          0.00015,
+          0.0
+        ]
+      },
+      "parentLink": "RR_hip",
+      "type": "fixed"
+    },
+    {
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "childLink": "RR_calf",
+      "limit": {
+        "lower": -2.7227,
+        "upper": -0.83776
+      },
+      "mimic": null,
+      "name": "RR_calf_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xyz": [
+          0.0,
+          0.0,
+          -0.213
+        ]
+      },
+      "parentLink": "RR_thigh",
+      "type": "revolute"
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "childLink": "RR_calflower",
+      "limit": null,
+      "mimic": null,
+      "name": "RR_calflower_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.05,
+          0.0
+        ],
+        "xyz": [
+          0.02,
+          0.0,
+          -0.148
+        ]
+      },
+      "parentLink": "RR_calf",
+      "type": "fixed"
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "childLink": "RR_calflower1",
+      "limit": null,
+      "mimic": null,
+      "name": "RR_calflower1_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.48,
+          0.0
+        ],
+        "xyz": [
+          -0.01,
+          0.0,
+          -0.04
+        ]
+      },
+      "parentLink": "RR_calflower",
+      "type": "fixed"
+    },
+    {
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "childLink": "RR_calf_rotor",
+      "limit": null,
+      "mimic": null,
+      "name": "RR_calf_rotor_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xyz": [
+          0.0,
+          0.03235,
+          0.0
+        ]
+      },
+      "parentLink": "RR_thigh",
+      "type": "fixed"
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "childLink": "RR_foot",
+      "limit": null,
+      "mimic": null,
+      "name": "RR_foot_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xyz": [
+          0.0,
+          0.0,
+          -0.213
+        ]
+      },
+      "parentLink": "RR_calf",
+      "type": "fixed"
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "childLink": "imu",
+      "limit": null,
+      "mimic": null,
+      "name": "imu_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xyz": [
+          -0.02557,
+          0.0,
+          0.04232
+        ]
+      },
+      "parentLink": "base",
+      "type": "fixed"
+    },
+    {
+      "axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "childLink": "radar",
+      "limit": null,
+      "mimic": null,
+      "name": "radar_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          2.8782,
+          0.0
+        ],
+        "xyz": [
+          0.28945,
+          0.0,
+          -0.046825
+        ]
+      },
+      "parentLink": "base",
+      "type": "fixed"
+    },
+    {
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "childLink": "front_camera",
+      "limit": null,
+      "mimic": null,
+      "name": "front_camera_joint",
+      "origin": {
+        "rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xyz": [
+          0.32715,
+          -3e-05,
+          0.04297
+        ]
+      },
+      "parentLink": "base",
+      "type": "fixed"
+    }
+  ],
+  "links": [
+    {
+      "depth": 0,
+      "name": "base"
+    },
+    {
+      "depth": 1,
+      "name": "FL_hip"
+    },
+    {
+      "depth": 1,
+      "name": "FL_hip_rotor"
+    },
+    {
+      "depth": 1,
+      "name": "FR_hip"
+    },
+    {
+      "depth": 1,
+      "name": "FR_hip_rotor"
+    },
+    {
+      "depth": 1,
+      "name": "Head_upper"
+    },
+    {
+      "depth": 1,
+      "name": "RL_hip"
+    },
+    {
+      "depth": 1,
+      "name": "RL_hip_rotor"
+    },
+    {
+      "depth": 1,
+      "name": "RR_hip"
+    },
+    {
+      "depth": 1,
+      "name": "RR_hip_rotor"
+    },
+    {
+      "depth": 1,
+      "name": "front_camera"
+    },
+    {
+      "depth": 1,
+      "name": "imu"
+    },
+    {
+      "depth": 1,
+      "name": "radar"
+    },
+    {
+      "depth": 2,
+      "name": "FL_thigh"
+    },
+    {
+      "depth": 2,
+      "name": "FL_thigh_rotor"
+    },
+    {
+      "depth": 2,
+      "name": "FR_thigh"
+    },
+    {
+      "depth": 2,
+      "name": "FR_thigh_rotor"
+    },
+    {
+      "depth": 2,
+      "name": "Head_lower"
+    },
+    {
+      "depth": 2,
+      "name": "RL_thigh"
+    },
+    {
+      "depth": 2,
+      "name": "RL_thigh_rotor"
+    },
+    {
+      "depth": 2,
+      "name": "RR_thigh"
+    },
+    {
+      "depth": 2,
+      "name": "RR_thigh_rotor"
+    },
+    {
+      "depth": 3,
+      "name": "FL_calf"
+    },
+    {
+      "depth": 3,
+      "name": "FL_calf_rotor"
+    },
+    {
+      "depth": 3,
+      "name": "FR_calf"
+    },
+    {
+      "depth": 3,
+      "name": "FR_calf_rotor"
+    },
+    {
+      "depth": 3,
+      "name": "RL_calf"
+    },
+    {
+      "depth": 3,
+      "name": "RL_calf_rotor"
+    },
+    {
+      "depth": 3,
+      "name": "RR_calf"
+    },
+    {
+      "depth": 3,
+      "name": "RR_calf_rotor"
+    },
+    {
+      "depth": 4,
+      "name": "FL_calflower"
+    },
+    {
+      "depth": 4,
+      "name": "FL_foot"
+    },
+    {
+      "depth": 4,
+      "name": "FR_calflower"
+    },
+    {
+      "depth": 4,
+      "name": "FR_foot"
+    },
+    {
+      "depth": 4,
+      "name": "RL_calflower"
+    },
+    {
+      "depth": 4,
+      "name": "RL_foot"
+    },
+    {
+      "depth": 4,
+      "name": "RR_calflower"
+    },
+    {
+      "depth": 4,
+      "name": "RR_foot"
+    },
+    {
+      "depth": 5,
+      "name": "FL_calflower1"
+    },
+    {
+      "depth": 5,
+      "name": "FR_calflower1"
+    },
+    {
+      "depth": 5,
+      "name": "RL_calflower1"
+    },
+    {
+      "depth": 5,
+      "name": "RR_calflower1"
+    }
+  ],
+  "rootLink": "base",
+  "schemaVersion": 2
+}
