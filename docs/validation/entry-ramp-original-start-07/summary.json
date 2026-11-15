@@ -1,0 +1,1004 @@
+{
+  "status": "time_limit",
+  "stop_reason": "simulation_time_limit",
+  "run_scope": "original_start",
+  "initial_yaw": 0.0,
+  "course_policy": "ordered",
+  "ordered_course": {
+    "stage": "pipe",
+    "waypoint_index": 5,
+    "front_observed": false,
+    "front_confirmations": 0,
+    "waypoint_count": 6,
+    "target": [
+      10.35,
+      5.42
+    ],
+    "completed_stages": [
+      "L1_ascent",
+      "L1_descent",
+      "S_curve",
+      "dead_end",
+      "rubble"
+    ],
+    "route_complete": false,
+    "awaiting_sensor_evidence": false
+  },
+  "task_layout": "finish-area",
+  "mission_complete": false,
+  "time_limit_seconds": 260.0,
+  "error": null,
+  "scene": "local_entry_ramp_plus_task_objects",
+  "control": "autonomy",
+  "pipe_ramp": "entry",
+  "modified_course_geometry": true,
+  "physics": "MuJoCo rigid-body dynamics; torque actuators; mj_step only",
+  "controller": "go2-convex-mpc@1c63c6a762779887ab0431fd60db681dede6cb32",
+  "state_estimation": "joint/IMU contact-scheduled kinematics, no plant root pose input",
+  "mujoco": "3.17.0",
+  "simulation_seconds": 260.00000000051335,
+  "wall_seconds": 311.59385936299986,
+  "fell": false,
+  "mpc_solves": 10834,
+  "events": [
+    {
+      "kind": "start",
+      "timestamp": 0.6000000000000004,
+      "payload": {
+        "coordinate_frame": "map_start"
+      }
+    },
+    {
+      "kind": "course_stage_enter",
+      "timestamp": 0.6000000000000004,
+      "payload": {
+        "stage": "L1_ascent"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 7.299999999999418,
+      "payload": {
+        "stage": "L1_ascent",
+        "index": 0,
+        "frame": "map_start",
+        "xy": [
+          0.0,
+          0.8
+        ],
+        "method": "passed_gate"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 9.699999999999909,
+      "payload": {
+        "stage": "L1_ascent",
+        "index": 1,
+        "frame": "map_start",
+        "xy": [
+          0.35,
+          1.9
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 11.100000000000376,
+      "payload": {
+        "stage": "L1_ascent",
+        "index": 2,
+        "frame": "map_start",
+        "xy": [
+          0.35,
+          2.7
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 12.500000000000844,
+      "payload": {
+        "stage": "L1_ascent",
+        "index": 3,
+        "frame": "map_start",
+        "xy": [
+          0.35,
+          3.5
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 14.900000000001645,
+      "payload": {
+        "stage": "L1_ascent",
+        "index": 4,
+        "frame": "map_start",
+        "xy": [
+          0.05,
+          3.6
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 18.000000000000902,
+      "payload": {
+        "stage": "L1_ascent",
+        "index": 5,
+        "frame": "map_start",
+        "xy": [
+          -0.15,
+          4.4
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 23.799999999997688,
+      "payload": {
+        "stage": "L1_ascent",
+        "index": 6,
+        "frame": "map_start",
+        "xy": [
+          -0.15,
+          5.3
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 25.099999999996967,
+      "payload": {
+        "stage": "L1_ascent",
+        "index": 7,
+        "frame": "map_start",
+        "xy": [
+          -0.1,
+          6.1
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 26.199999999996358,
+      "payload": {
+        "stage": "L1_ascent",
+        "index": 8,
+        "frame": "map_start",
+        "xy": [
+          0.05,
+          6.7
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_stage_complete",
+      "timestamp": 26.199999999996358,
+      "payload": {
+        "stage": "L1_ascent",
+        "observed_height_range_m": [
+          0.0,
+          0.4475732706602005
+        ],
+        "max_imu_pitch_deg": 11.201673014929831,
+        "roof_observed": true,
+        "front_observed": false,
+        "estimated_distance_m": 7.714073981038057
+      }
+    },
+    {
+      "kind": "course_stage_enter",
+      "timestamp": 26.299999999996302,
+      "payload": {
+        "stage": "L1_descent"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 29.199999999994695,
+      "payload": {
+        "stage": "L1_descent",
+        "index": 0,
+        "frame": "map_start",
+        "xy": [
+          0.25,
+          7.5
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 31.099999999993642,
+      "payload": {
+        "stage": "L1_descent",
+        "index": 1,
+        "frame": "map_start",
+        "xy": [
+          0.8,
+          8.2
+        ],
+        "method": "passed_gate"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 37.29999999999962,
+      "payload": {
+        "stage": "L1_descent",
+        "index": 2,
+        "frame": "map_start",
+        "xy": [
+          1.55,
+          8.2
+        ],
+        "method": "passed_gate"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 39.50000000000231,
+      "payload": {
+        "stage": "L1_descent",
+        "index": 3,
+        "frame": "map_start",
+        "xy": [
+          2.4,
+          8.0
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 41.50000000000475,
+      "payload": {
+        "stage": "L1_descent",
+        "index": 4,
+        "frame": "map_start",
+        "xy": [
+          3.45,
+          7.55
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_stage_complete",
+      "timestamp": 41.50000000000475,
+      "payload": {
+        "stage": "L1_descent",
+        "observed_height_range_m": [
+          0.05532702353472019,
+          0.48580248077974514
+        ],
+        "max_imu_pitch_deg": 13.656408344537248,
+        "roof_observed": true,
+        "front_observed": false,
+        "estimated_distance_m": 5.312558858578406
+      }
+    },
+    {
+      "kind": "course_stage_enter",
+      "timestamp": 41.600000000004876,
+      "payload": {
+        "stage": "S_curve"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 42.70000000000622,
+      "payload": {
+        "stage": "S_curve",
+        "index": 0,
+        "frame": "map_start",
+        "xy": [
+          3.9,
+          7.35
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 44.20000000000805,
+      "payload": {
+        "stage": "S_curve",
+        "index": 1,
+        "frame": "map_start",
+        "xy": [
+          4.4,
+          7.0
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 46.100000000010375,
+      "payload": {
+        "stage": "S_curve",
+        "index": 2,
+        "frame": "map_start",
+        "xy": [
+          4.75,
+          6.4
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 48.800000000013675,
+      "payload": {
+        "stage": "S_curve",
+        "index": 3,
+        "frame": "map_start",
+        "xy": [
+          4.5,
+          5.8
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 53.90000000001991,
+      "payload": {
+        "stage": "S_curve",
+        "index": 4,
+        "frame": "map_start",
+        "xy": [
+          4.55,
+          5.6
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 55.90000000002235,
+      "payload": {
+        "stage": "S_curve",
+        "index": 5,
+        "frame": "map_start",
+        "xy": [
+          3.95,
+          5.05
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 56.70000000002333,
+      "payload": {
+        "stage": "S_curve",
+        "index": 6,
+        "frame": "map_start",
+        "xy": [
+          3.75,
+          4.75
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 69.80000000001873,
+      "payload": {
+        "stage": "S_curve",
+        "index": 7,
+        "frame": "map_start",
+        "xy": [
+          3.55,
+          4.4
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_stage_complete",
+      "timestamp": 69.80000000001873,
+      "payload": {
+        "stage": "S_curve",
+        "observed_height_range_m": [
+          0.028957250305823662,
+          0.051416339383536125
+        ],
+        "max_imu_pitch_deg": 8.502988265920008,
+        "roof_observed": true,
+        "front_observed": false,
+        "estimated_distance_m": 6.1969105730598555
+      }
+    },
+    {
+      "kind": "course_stage_enter",
+      "timestamp": 69.9000000000185,
+      "payload": {
+        "stage": "dead_end"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 71.80000000001407,
+      "payload": {
+        "stage": "dead_end",
+        "index": 0,
+        "frame": "map_start",
+        "xy": [
+          3.55,
+          3.7
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "dead_end_confirmed",
+      "timestamp": 72.9000000000115,
+      "payload": {
+        "source": "consecutive frontal lidar observations",
+        "observations": 3,
+        "frame": "body"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 75.20000000000614,
+      "payload": {
+        "stage": "dead_end",
+        "index": 1,
+        "frame": "map_start",
+        "xy": [
+          3.55,
+          3.2
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 77.10000000000171,
+      "payload": {
+        "stage": "dead_end",
+        "index": 2,
+        "frame": "map_start",
+        "xy": [
+          3.55,
+          4.0
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 79.59999999999589,
+      "payload": {
+        "stage": "dead_end",
+        "index": 3,
+        "frame": "map_start",
+        "xy": [
+          3.75,
+          4.75
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 85.2999999999826,
+      "payload": {
+        "stage": "dead_end",
+        "index": 4,
+        "frame": "map_start",
+        "xy": [
+          3.95,
+          5.05
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "margin_escape",
+      "timestamp": 87.59999999997724,
+      "payload": {
+        "speed_limit_mps": 0.05,
+        "physical_body_checks": true,
+        "water_contact_envelope_unchanged": true
+      }
+    },
+    {
+      "kind": "margin_escape",
+      "timestamp": 88.49999999997515,
+      "payload": {
+        "speed_limit_mps": 0.05,
+        "physical_body_checks": true,
+        "water_contact_envelope_unchanged": true
+      }
+    },
+    {
+      "kind": "margin_escape",
+      "timestamp": 89.29999999997328,
+      "payload": {
+        "speed_limit_mps": 0.05,
+        "physical_body_checks": true,
+        "water_contact_envelope_unchanged": true
+      }
+    },
+    {
+      "kind": "margin_escape",
+      "timestamp": 91.19999999996885,
+      "payload": {
+        "speed_limit_mps": 0.05,
+        "physical_body_checks": true,
+        "water_contact_envelope_unchanged": true
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 91.69999999996769,
+      "payload": {
+        "stage": "dead_end",
+        "index": 5,
+        "frame": "map_start",
+        "xy": [
+          4.55,
+          5.35
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 92.99999999996466,
+      "payload": {
+        "stage": "dead_end",
+        "index": 6,
+        "frame": "map_start",
+        "xy": [
+          4.55,
+          5.6
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 107.9999999999297,
+      "payload": {
+        "stage": "dead_end",
+        "index": 7,
+        "frame": "map_start",
+        "xy": [
+          4.55,
+          5.6
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_stage_complete",
+      "timestamp": 107.9999999999297,
+      "payload": {
+        "stage": "dead_end",
+        "observed_height_range_m": [
+          0.012614186749930728,
+          0.053729161417795324
+        ],
+        "max_imu_pitch_deg": 1.8203692182537687,
+        "roof_observed": true,
+        "front_observed": true,
+        "estimated_distance_m": 4.25524657660683
+      }
+    },
+    {
+      "kind": "course_map_refined",
+      "timestamp": 107.9999999999297,
+      "payload": {
+        "from_m": 0.1,
+        "to_m": 0.05,
+        "source": "recorded keyframe observations and estimated poses"
+      }
+    },
+    {
+      "kind": "course_stage_enter",
+      "timestamp": 108.09999999992947,
+      "payload": {
+        "stage": "rubble"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 112.49999999991921,
+      "payload": {
+        "stage": "rubble",
+        "index": 0,
+        "frame": "map_start",
+        "xy": [
+          4.55,
+          4.6
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 115.79999999991152,
+      "payload": {
+        "stage": "rubble",
+        "index": 1,
+        "frame": "map_start",
+        "xy": [
+          4.55,
+          4.0
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 118.8999999999043,
+      "payload": {
+        "stage": "rubble",
+        "index": 2,
+        "frame": "map_start",
+        "xy": [
+          5.25,
+          3.0
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 121.599999999898,
+      "payload": {
+        "stage": "rubble",
+        "index": 3,
+        "frame": "map_start",
+        "xy": [
+          5.25,
+          1.85
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 126.69999999988612,
+      "payload": {
+        "stage": "rubble",
+        "index": 4,
+        "frame": "map_start",
+        "xy": [
+          6.25,
+          1.85
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 129.5999999998907,
+      "payload": {
+        "stage": "rubble",
+        "index": 5,
+        "frame": "map_start",
+        "xy": [
+          7.35,
+          1.85
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 132.89999999990647,
+      "payload": {
+        "stage": "rubble",
+        "index": 6,
+        "frame": "map_start",
+        "xy": [
+          8.3,
+          2.4
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 135.8999999999208,
+      "payload": {
+        "stage": "rubble",
+        "index": 7,
+        "frame": "map_start",
+        "xy": [
+          9.0,
+          3.2
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 139.59999999993846,
+      "payload": {
+        "stage": "rubble",
+        "index": 8,
+        "frame": "map_start",
+        "xy": [
+          9.0,
+          4.3
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 147.29999999997523,
+      "payload": {
+        "stage": "rubble",
+        "index": 9,
+        "frame": "map_start",
+        "xy": [
+          7.3,
+          4.3
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 170.500000000086,
+      "payload": {
+        "stage": "rubble",
+        "index": 10,
+        "frame": "map_start",
+        "xy": [
+          6.5,
+          5.42
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_stage_complete",
+      "timestamp": 170.500000000086,
+      "payload": {
+        "stage": "rubble",
+        "observed_height_range_m": [
+          0.06468279501584295,
+          0.09459817505805801
+        ],
+        "max_imu_pitch_deg": 4.937459208109954,
+        "roof_observed": true,
+        "front_observed": false,
+        "estimated_distance_m": 13.844371399305798
+      }
+    },
+    {
+      "kind": "corridor_terrain_submap_started",
+      "timestamp": 170.60000000008648,
+      "payload": {
+        "source": "current and subsequent sensor observations",
+        "global_map_retained": true,
+        "unknown_support_blocked": true
+      }
+    },
+    {
+      "kind": "course_stage_enter",
+      "timestamp": 170.60000000008648,
+      "payload": {
+        "stage": "pipe"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 172.40000000009508,
+      "payload": {
+        "stage": "pipe",
+        "index": 0,
+        "frame": "map_start",
+        "xy": [
+          7.05,
+          5.42
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 182.40000000014282,
+      "payload": {
+        "stage": "pipe",
+        "index": 1,
+        "frame": "map_start",
+        "xy": [
+          7.55,
+          5.42
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 197.40000000021445,
+      "payload": {
+        "stage": "pipe",
+        "index": 2,
+        "frame": "map_start",
+        "xy": [
+          8.149999999999999,
+          5.42
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 200.80000000023068,
+      "payload": {
+        "stage": "pipe",
+        "index": 3,
+        "frame": "map_start",
+        "xy": [
+          8.85,
+          5.42
+        ],
+        "method": "reached_pose"
+      }
+    },
+    {
+      "kind": "course_waypoint",
+      "timestamp": 203.0000000002412,
+      "payload": {
+        "stage": "pipe",
+        "index": 4,
+        "frame": "map_start",
+        "xy": [
+          9.2,
+          5.42
+        ],
+        "method": "reached_pose"
+      }
+    }
+  ],
+  "mission_state": "blocked",
+  "mpc_terrain_updates": 2563,
+  "observations": 2594,
+  "nav_p95_seconds": 0.15123613729983845,
+  "recording": {
+    "video": false,
+    "raw": false,
+    "physics": false,
+    "snapshots": false
+  },
+  "compute": {
+    "physics": "CPU",
+    "mpc": "CPU",
+    "autonomy": "CPU",
+    "blas_threads": 1,
+    "graphics_device": "NVIDIA GeForce RTX 3060 Laptop GPU/PCIe/SSE2",
+    "viewer_syncs": 0,
+    "front_camera_updates": 0
+  },
+  "timing_p95_seconds": {
+    "sensors_and_terrain": 0.008066854849766965,
+    "autonomy": 0.15123613729983845,
+    "mpc_update": 0.0046250334502474285,
+    "physics_step": 0.0001626849999411206
+  },
+  "final_map_resolution_m": 0.05,
+  "mpc_qp_p95_seconds": 0.002079593749385822,
+  "diagnostics_only": {
+    "initial_world_position": [
+      0.8,
+      0.8,
+      0.3
+    ],
+    "final_world_position": [
+      9.749480272479085,
+      6.1466860623371895,
+      0.5491441294307361
+    ],
+    "displacement_m": 10.424981966252174
+  },
+  "evaluation": {
+    "scope": "local scene diagnostics; not official scoring",
+    "ordered_stages_completed": [
+      "L1_ascent",
+      "L1_descent",
+      "S_curve",
+      "dead_end",
+      "rubble"
+    ],
+    "ordered_traversal_verified": false,
+    "dead_end_entered": true,
+    "dead_end_exited": true,
+    "rubble_area_visited": true,
+    "pipe_passage_verified": false,
+    "required_pipe": "tunnel2",
+    "pipe2_floor_contact": true,
+    "course_waypoint_errors_m": [
+      0.20338419465132196,
+      0.12343937840805562,
+      0.12758624996820284,
+      0.11816438480143908,
+      0.17356935695938056,
+      0.15731279720949554,
+      0.13524381844238786,
+      0.4101977750307163,
+      0.6921926586537543,
+      0.31876569736770327,
+      0.15817836000548405,
+      0.06461043814535843,
+      0.1139710223102379,
+      0.13237330514969348,
+      0.1211274394272142,
+      0.06007739608045912,
+      0.029493372399672438,
+      0.1717987365559612,
+      0.09165851150321219,
+      0.22766392571070096,
+      0.16251791103959556,
+      0.27832428308565826,
+      0.03313117632111026,
+      0.10728677113521591,
+      0.2912057644668306,
+      0.45579813088698207,
+      0.36640089959576144,
+      0.17455238751555846,
+      0.2506199768323992,
+      0.22326827206813127,
+      0.06733451626432932,
+      0.09775554160956984,
+      0.14624253783798166,
+      0.053843446088357505,
+      0.308311940561695,
+      0.23787775908039072,
+      0.29247513761349647,
+      0.30776165565195346,
+      0.28951241153510887,
+      0.18100174100028155,
+      0.26688892998604785,
+      0.21956022996131308,
+      0.14104601063812253,
+      0.12572697706868466,
+      0.15944475920218779,
+      0.1586547724134874
+    ],
+    "obstacle_contact_episodes": 0,
+    "contacts": [],
+    "water_entry_episodes": 0,
+    "out_of_bounds_episodes": 0,
+    "first_terrain_contact": {
+      "ascent": 12.830000000000954,
+      "platform": 25.369999999996818,
+      "descent": 33.1899999999946,
+      "tunnel": 172.6800000000964
+    },
+    "max_base_height_m": 0.8005372578221018,
+    "target_position_errors_m": [],
+    "inside_finish_enclosure": false,
+    "map_anchor_timestamp": 0.6000000000000004,
+    "map_anchor_world_xy": [
+      0.7916719332560097,
+      0.8000004198928008
+    ],
+    "target_error_p90_m": null,
+    "local_task_pass": false
+  },
+  "official_scene_sha256": "2dd875d238040d9a8616869cb2e30d00abf131b48b89b011af6dc10bd264089c",
+  "not_a_competition_score": true,
+  "full_course_pass": false
+}

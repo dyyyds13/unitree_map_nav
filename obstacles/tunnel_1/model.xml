@@ -1,0 +1,10 @@
+<mujoco model="robotics_bench_tunnel_1">
+  <compiler angle="radian" meshdir="assets" />
+  <worldbody>
+    <body name="tunnel_1" pos="0 0 0">
+      <geom name="tunnel1_jamb_y8_60_continuous_mortar_core" type="box" pos="0 -0.199999809 0.270500004" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" size="0.400000095 0.270500004 0.0909996033" rgba="0.45 0.47 0.5 1" quat="0.707106769 0.707106769 0 0" />
+      <geom name="tunnel1_jamb_y9_00_continuous_mortar_core" type="box" pos="0 0.199999809 0.270500004" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" size="0.400000095 0.270500004 0.0909996033" rgba="0.45 0.47 0.5 1" quat="0.707106769 0.707106769 0 0" />
+      <geom name="tunnel1_solid_roof_clear_height_55" type="box" pos="4.76837158e-07 0 0.625" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" size="0.399999619 0.300000191 0.0749999881" rgba="0.45 0.47 0.5 1" quat="1 0 0 0" />
+    </body>
+  </worldbody>
+</mujoco>

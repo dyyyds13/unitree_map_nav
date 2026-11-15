@@ -1,0 +1,43 @@
+{
+  "scope": "read-only original source geometry audit; no model edits",
+  "official_model": "scene/mujoco/competition-course.mjb",
+  "sha256": "2dd875d238040d9a8616869cb2e30d00abf131b48b89b011af6dc10bd264089c",
+  "same_as_training_package_v8": true,
+  "ray_y_m": 6.22,
+  "outside_floor_m": 0.0,
+  "inside_floor_m": 0.2200000025331971,
+  "inside_floor_geom": "tunnel2_internal_circular_segment_flat_insert",
+  "exit_threshold_geom": "tunnel2_to3_sloped_continuous_threshold",
+  "samples_x_floor_m": [
+    [
+      8.2,
+      0.0
+    ],
+    [
+      8.59,
+      0.0
+    ],
+    [
+      8.65,
+      0.2200000025331971
+    ],
+    [
+      9.6,
+      0.2200000025331971
+    ],
+    [
+      10.4,
+      0.2200000025331971
+    ],
+    [
+      10.8,
+      0.15230777935367928
+    ],
+    [
+      11.1,
+      0.050769259000288613
+    ]
+  ],
+  "current_autonomous_step_capability_m": 0.08,
+  "autonomous_pipe2_integrated": false
+}

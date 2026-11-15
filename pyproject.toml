@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "go2-rescue"
+version = "0.1.0"
+description = "ROS-independent, non-training Go2 rescue autonomy prototype"
+requires-python = ">=3.10"
+dependencies = ["numpy==1.26.4", "scipy==1.13.1", "opencv-contrib-python-headless==4.10.0.84"]
+
+[project.optional-dependencies]
+test = ["pytest==8.3.5"]
+lidar = ["kiss-icp>=1.2,<2"]
+simulation = ["mujoco==3.17.0", "casadi==3.6.7", "osqp>=1.0,<2", "threadpoolctl==3.6.0"]
+
+[project.scripts]
+go2-rescue = "go2_rescue.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

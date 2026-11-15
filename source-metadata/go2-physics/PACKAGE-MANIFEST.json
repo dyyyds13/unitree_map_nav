@@ -1,0 +1,30 @@
+{
+  "schema": "robotics-bench-training-kit/1",
+  "package_id": "go2-competition-training-kit-v004",
+  "created_at": "2026-10-26T10:39:29.144164+00:00",
+  "units": "metres",
+  "coordinate_system": "world XYZ, Z up",
+  "source_scene_sha256": "92eb2404e2200948cef04940d557c385dac2540205666da1ea25be0b5111087f",
+  "visual_scene_sha256": "6df20a505f6e00a4f3e02271a1cbfe881a3143fea2daa3079cb54de0fe42ac82",
+  "unitree_mujoco_commit": "1eb6642e3f3fdfb7fb13a9794fd6a2dd93ea0e7d",
+  "contents": {
+    "complete_scene_glb": 1,
+    "logical_model_glbs": 10,
+    "module_glbs": 27,
+    "mujoco_profiles": [
+      "fast",
+      "fidelity",
+      "mjx_fast"
+    ],
+    "logical_rubble_piles": 5,
+    "logical_tunnels": 3,
+    "logical_ramp_assemblies": 1,
+    "logical_s_curves": 1
+  },
+  "validation": {
+    "visual": "passed",
+    "mujoco_local_preflight": "passed",
+    "mjx_cpu_capacity_to_batch_4096": "passed",
+    "competition_release": "pending_external_gates"
+  }
+}

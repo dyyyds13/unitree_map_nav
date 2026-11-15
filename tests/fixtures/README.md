@@ -1,0 +1,1 @@
+Negative camera regressions from output/full-course-water-10: frame_001638 (164.4s, rubble) and frame_001948 (195.4s, wall/shadow). Raw 320x240 simulated camera pixels, no labels/masks supplied to autonomy. Original scene SHA256: 2dd875d238040d9a8616869cb2e30d00abf131b48b89b011af6dc10bd264089c. These exposed false reports in the earlier weak-arc tracker.

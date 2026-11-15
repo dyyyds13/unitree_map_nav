@@ -1,153 +1,60 @@
-# Unitree Go1 “废墟智援”比赛仿真工作区
+# Robotics Bench Go2 赛事训练资源包
 
-这个项目在宇树开源仿真 [macc-n/ros_unitree](https://github.com/macc-n/ros_unitree) 的基础上，用 **ROS Noetic + Gazebo 11** 复现了 **Go1 四足机器人**的仿真，并按照《人工智能+竞赛》“废墟智援”赛题附录，搭建了一座 **12×10 米比赛场地的示意模型**：
+状态：可分发版本。训练、验证和评测仍以 MuJoCo 物理文件为权威。
 
-- 上下坡（约 12°）、S 弯、死胡同（需要倒退退出）
-- 五处碎石堆（每处 12 块可碰撞石块）
-- 三种管道：过窄应放弃的方管、可通过的圆管、限高方涵
-- 起点 / 终点地面标记
+本包面向 MuJoCo 训练、验证与评测，统一收录 Go2 本地训练模型、完整赛事场景、独立障碍及生命探测目标。内部来源版本仅保留在审计元数据中，不用于公开资源分类和目录命名。
 
-目前已跑通的能力：Go1 站立与低速行走、Gmapping 激光建图、AMCL 定位 + move_base/DWA 到点导航（原房间场景误差约 0.056 米）。
+## 资源分类
 
-![比赛场地 Gazebo 截图](src/unitree_competition/docs/gazebo_preview.png)
+### 1. Go2 训练模型
 
-![比赛场地平面图](src/unitree_competition/docs/arena_plan.png)
+- `robot/go2/physics/go2.xml`：Unitree Go2 MuJoCo 本地训练物理模型；
+- `robot/go2/physics/assets/`：该模型引用的 16 个 OBJ 网格；
+- `robot/go2/visual/`：与赛事场景一致的 `unitree-go2-pbr-v1` PBR/关节主本体及预览资料；GLB 内嵌 `Walk_InPlace` 循环动作，平台 File Explorer 可自动播放。
 
-> 注意：场地是按赛题附图做的**示意重建**，尺寸取自图中标注，细节是建模选择，**最终以组委会公布的场地为准**。
+`go2.xml` 包含 12 个关节与 12 个电机执行器，是当前本地训练物理基线。`robot/go2/visual/` 中的 GLB、动作和关节元数据只用于视觉、层级及运动学预览，其 Manifest 明确 `physics_authority=false`；两者不能混为同一物理权威文件。`Walk_InPlace` 不是 locomotion policy、控制器、实机轨迹或评分依据。
 
-## 当前实现与比赛任务的对应关系
+### 2. 场景资源
 
-| 比赛要求 | 本项目现状 |
-| --- | --- |
-| 任务 1：非结构化地形运动控制、动态避障、路径规划 | 场地模型已完成；**自主探索已跑通**（explore 模式：前沿探索自动走遍场地并建图）；Gmapping + AMCL + DWA 导航基线已跑通（房间场景） |
-| 上下坡 / 狭窄通道 / 乱石越障 | 场景中已建模（坡 12°、S 弯弯宽 1.2 m、障碍空地五处碎石），机器人可自主通过上坡与 S 弯 |
-| 任务 2：生命目标识别与信息采集 | **尚未实现**（需要相机检测算法，后续方向） |
-| 隧道 1 识别后放弃、倒退决策、低姿态过管 | 尚未实现 |
-| Go2 机体、原生雷达、D435i 相机、弱光、动态障碍 | 尚未适配 |
+- `scene/mujoco/competition-course.mjb`：可直接加载的单文件 MuJoCo 物理场景；
+- `scene/visual/competition-course.glb`：File Explorer 可直接查看的完整场景视觉模型，不内嵌重复的 Go2；
+- `robot/go2/visual/model/unitree-go2.glb`：独立 Go2 视觉模型及循环 walk 动作。
 
-自主探索演示：
+机器人与场景碰撞数据已经编译进 MJB，不再以数百个零散 OBJ 向参赛选手分发。视觉 GLB 不替代 MJB，Blender 制作源文件和制作脚本不进入参赛资源包。
 
-```bash
-./run_competition.sh explore
-```
+### 3. 障碍资源
 
-机器人会自己从起点出发：上坡（L1）→ 转弯平台下坡 → S 弯（L2）→ 死胡同分岔 → 障碍空地（五处碎石）→ 管道区（L3），边探索边建图，无需遥控。按 L1→L3 的线性路线组织场地，对应比赛任务的递进难度。
+`obstacles/` 只包含 9 个独立障碍：5 个整体乱石堆、3 个隧道和 1 个坡道组合。每个乱石堆作为一个独立模型交付，不按单块岩石拆分。每个障碍包含 MuJoCo `model.xml`、`model.mjz`、预览 GLB 和元数据。碰撞层独立于视觉模型：每组乱石堆使用 100 个凸网格，坡道使用与完整场景一致的 161 个凸分解网格；Tunnel2 使用 24 个保持中空通道的凸环段网格，Tunnel3 的 5 个结构碰撞件等形转换为凸网格。Tunnel1 明确设计为不可通行，碰撞定义保持不变。
 
-![自主探索运行实录：Gazebo（左）与 RViz 地图（右）](src/unitree_competition/docs/explore_demo.png)
+### 4. 生命探测资源
 
-## 环境要求
+`life-detection/football/` 包含足球生命探测替代目标的 MuJoCo 模型、MJZ、预览 GLB 和语义元数据。它仅代表赛事目标代理，不代表真实人体或生理信号。
 
-| 项目 | 要求 |
-| --- | --- |
-| 操作系统 | Ubuntu 20.04 |
-| ROS | ROS Noetic（`ros-noetic-desktop-full`） |
-| Gazebo | Gazebo 11（随 ROS Noetic 自带） |
-| Python | 系统 Python 3.8 + `python3-venv` |
-| 硬件建议 | 内存 ≥ 8 GB；虚拟机需开启 3D 加速，否则 Gazebo 可能黑屏 |
+## 运行边界
 
-本仓库只包含项目代码，**不包含操作系统和 ROS**，需要先自行装好 ROS Noetic。
+- 当前平台赛事边界仅为 MuJoCo 训练、验证与评测；
+- 不提供 Isaac Sim / Isaac Lab、Gazebo、Webots 等其他仿真框架的在线运行；
+- RGB 需要独立冻结相机与渲染合同，不能因存在视觉模型就假定策略必然获得 RGB；
+- 正式隐藏布局、目标摆放坐标、裁判真值、评分配置和参赛策略不在本包中。
 
-## 快速开始（5 步跑通比赛场地）
+## 视觉预览约定
 
-```bash
-# 1. 克隆本仓库
-git clone https://github.com/liangjihui643-beep/unitree_map_nav.git
-cd unitree_map_nav
+- 完整场景、障碍、足球与 Go2 GLB 均使用 glTF 2.0 右手坐标系、Y-up 文件约定，并携带 File Explorer 可直接识别的 `roboticsBench.upAxis=Y` 展示元数据；MuJoCo XML/MJZ/MJB 继续使用 Z-up 物理坐标；
+- 完整场景 GLB 保留原赛事几何范围且恢复与独立障碍一致的暖灰混凝土、灰砖、砂浆和石灰岩 PBR metallic-roughness 参数，不再以白模方式展示；
+- 9 个独立障碍 GLB 使用与赛事全景图一致的石灰岩、暖灰混凝土、灰砖与砂浆 PBR 色彩分组，并显式携带非金属度、粗糙度及基础色参数；
+- 障碍与足球 GLB 通过顶层 `PreviewRootCentered` 展示节点将包围盒中心对齐原点，避免交互旋转时模型偏离视野；内部网格局部坐标保持不变，足球预览同时携带标准 Y-up/PBR 展示契约；
+- Go2 GLB 保持原始本体、层级和材质，在本体层级之外增加明确的 Z-up→Y-up 坐标转换根节点；不参与障碍模型的居中处理；
+- 完整场景视觉预览使用 `scene/visual/competition-course.glb`，且不包含重复机器狗；训练、验证和评测统一加载 `scene/mujoco/competition-course.mjb`；
+- Go2 GLB 的 `Walk_InPlace` 仅由 8 个关节 quaternion 轨道构成，循环播放时不改变根节点位置；
+- 展示根、颜色、金属度和粗糙度均不具备物理权威性。训练、验证和评测仍以 XML、OBJ、MJZ 与 MJB 为准。
 
-# 2. 下载上游宇树代码并打上本项目的适配补丁
-bash scripts/restore_upstream.sh
+## 完整性校验
 
-# 3. 准备 Python 虚拟环境
-python3 -m venv .venv
-.venv/bin/pip install pyyaml matplotlib
-
-# 4. 安装额外 ROS 依赖（LCM、gmapping、控制器等；有 sudo 直接装，没有则自动下载解包到本地）
-bash scripts/install_deps.sh
-
-# 5. 编译
-./scripts/build.sh
-```
-
-启动比赛场地（Gazebo + RViz）：
+在本目录执行：
 
 ```bash
-./run_competition.sh mapping
+shasum -a 256 -c SHA256SUMS
 ```
 
-看到 Gazebo 里的场地和 RViz 里的激光点云后，在**另一个终端**里遥控机器人慢慢走：
+所有条目必须返回 `OK`。统一版本和关键入口见 `MANIFEST.json`，原始来源文件与许可边界见 `source-metadata/`、`LICENSES/` 和 `NOTICE.md`。
 
-```bash
-source activate.sh
-# 以 0.08 m/s 低速前进（约 1.4 m 身高步态下比较稳）
-rostopic pub -r 10 /cmd_vel geometry_msgs/Twist '{linear: {x: 0.08}}'
-# 想停下：先按 Ctrl+C 中断上面的命令，再发一条零速度
-rostopic pub -1 /cmd_vel geometry_msgs/Twist '{}'
-```
-
-走完一圈后保存地图，再启动导航模式：
-
-```bash
-rosrun map_server map_saver -f src/unitree_competition/maps/competition
-./run_competition.sh navigation
-```
-
-> 新下载的仓库里**没有现成的比赛地图**，`src/unitree_competition/maps/` 需要按上面的步骤自己建。仓库里 `src/unitree_local_demo/maps/demo_room.pgm` 是简单房间场景的示例地图，仅供演示，不能用在比赛场景。
-
-## 常用命令
-
-| 目的 | 命令 |
-| --- | --- |
-| 启动比赛场景（建图 / 导航 / **自主探索**） | `./run_competition.sh mapping` / `./run_competition.sh navigation` / `./run_competition.sh explore` |
-| 启动原房间演示 | `./run_demo.sh mapping` / `./run_demo.sh navigation` |
-| 后台启动（不显示窗口） | `python3 scripts/session.py start mapping --scene competition --headless --no-rviz` |
-| 查看 / 停止后台会话 | `python3 scripts/session.py status` / `python3 scripts/session.py stop` |
-| 一键自检（场景、传感器、碰撞） | `source activate.sh && python3 scripts/verify_competition.py` |
-| 重新编译 | `./scripts/build.sh` |
-| 修改场地参数后重建 | 编辑 `src/unitree_competition/config/arena.yaml`，然后 `python src/unitree_competition/scripts/generate_world.py` |
-
-## 目录结构
-
-```
-unitree_map_nav/
-├── run_competition.sh / run_demo.sh   # 一键启动脚本（比赛场地 / 房间场景）
-├── activate.sh                        # source 它获得本工作区的 ROS 环境
-├── scripts/
-│   ├── restore_upstream.sh            # 克隆上游 + 打补丁
-│   ├── install_deps.sh                # 安装额外 ROS 依赖
-│   ├── build.sh                       # catkin_make 编译
-│   ├── session.py                     # 后台启动/停止/查看仿真会话
-│   ├── verify_competition.py          # 比赛场景自检脚本
-│   └── setup_env.bash                 # 环境变量（被 activate.sh 调用）
-├── src/
-│   ├── ros_unitree/                   # 上游宇树代码（git 忽略，由脚本恢复）
-│   ├── unitree_competition/           # 比赛场地：生成器、world、launch、配置、平面图
-│   └── unitree_local_demo/            # 简单房间场景 + 示例地图（入门用）
-├── patches/ros_unitree-noetic.patch   # 对上游的 Noetic 适配修改
-├── config/environment.json            # 上游版本、依赖版本等环境记录
-└── models/                            # 地面、太阳等 Gazebo 基础模型
-```
-
-编译产物（`build/`、`devel/`）、虚拟环境（`.venv/`）、本地依赖（`.runtime/`）和日志（`logs/`）都不进入 Git。
-
-## 常见问题（FAQ）
-
-**Gazebo / RViz 窗口黑屏或打不开？**
-虚拟机请先开启 3D 加速；也可以不显示界面跑：`./run_competition.sh mapping gui:=false rviz:=false`。
-
-**机器人走两步就摔倒？**
-速度放慢（0.08 m/s 以内），先让机器人站稳再发指令；每次只发一个方向的速度。
-
-**提示端口被占用 / 会话已存在？**
-一次只能跑一个仿真：`python3 scripts/session.py stop` 停掉再启动。
-
-**换电脑后编译报错找不到包？**
-确认第 2、4 步做过（恢复上游 + 装依赖），再重新 `./scripts/build.sh`。
-
-**想改场地尺寸？**
-改 `src/unitree_competition/config/arena.yaml` 后运行生成器并重启 Gazebo，见 [比赛场地包说明](src/unitree_competition/README.md#修改尺寸及重建)。
-
-## 上游代码与许可证
-
-- 上游：[macc-n/ros_unitree](https://github.com/macc-n/ros_unitree)，固定版本 `0c7b48ade880fd9096d196123b3f9c98ea1131b3`（见 `config/environment.json`）。
-- 上游使用 **BSD-3-Clause** 许可证（Copyright © Unitree Robotics），LICENSE 文件随上游代码一起保留；本项目的适配修改见 `patches/ros_unitree-noetic.patch`。
-- 比赛场地为按赛题附图的示意重建，仅供备赛开发，以组委会发布为准。

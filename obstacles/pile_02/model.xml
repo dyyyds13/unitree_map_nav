@@ -1,0 +1,209 @@
+<mujoco model="robotics_bench_pile_02">
+  <compiler angle="radian" meshdir="assets" />
+  <asset>
+    <mesh name="mesh_pile02_rock000" file="pile02_rock000.obj" />
+    <mesh name="mesh_pile02_rock001" file="pile02_rock001.obj" />
+    <mesh name="mesh_pile02_rock002" file="pile02_rock002.obj" />
+    <mesh name="mesh_pile02_rock003" file="pile02_rock003.obj" />
+    <mesh name="mesh_pile02_rock004" file="pile02_rock004.obj" />
+    <mesh name="mesh_pile02_rock005" file="pile02_rock005.obj" />
+    <mesh name="mesh_pile02_rock006" file="pile02_rock006.obj" />
+    <mesh name="mesh_pile02_rock007" file="pile02_rock007.obj" />
+    <mesh name="mesh_pile02_rock008" file="pile02_rock008.obj" />
+    <mesh name="mesh_pile02_rock009" file="pile02_rock009.obj" />
+    <mesh name="mesh_pile02_rock010" file="pile02_rock010.obj" />
+    <mesh name="mesh_pile02_rock011" file="pile02_rock011.obj" />
+    <mesh name="mesh_pile02_rock012" file="pile02_rock012.obj" />
+    <mesh name="mesh_pile02_rock013" file="pile02_rock013.obj" />
+    <mesh name="mesh_pile02_rock014" file="pile02_rock014.obj" />
+    <mesh name="mesh_pile02_rock015" file="pile02_rock015.obj" />
+    <mesh name="mesh_pile02_rock016" file="pile02_rock016.obj" />
+    <mesh name="mesh_pile02_rock017" file="pile02_rock017.obj" />
+    <mesh name="mesh_pile02_rock018" file="pile02_rock018.obj" />
+    <mesh name="mesh_pile02_rock019" file="pile02_rock019.obj" />
+    <mesh name="mesh_pile02_rock020" file="pile02_rock020.obj" />
+    <mesh name="mesh_pile02_rock021" file="pile02_rock021.obj" />
+    <mesh name="mesh_pile02_rock022" file="pile02_rock022.obj" />
+    <mesh name="mesh_pile02_rock023" file="pile02_rock023.obj" />
+    <mesh name="mesh_pile02_rock024" file="pile02_rock024.obj" />
+    <mesh name="mesh_pile02_rock025" file="pile02_rock025.obj" />
+    <mesh name="mesh_pile02_rock026" file="pile02_rock026.obj" />
+    <mesh name="mesh_pile02_rock027" file="pile02_rock027.obj" />
+    <mesh name="mesh_pile02_rock028" file="pile02_rock028.obj" />
+    <mesh name="mesh_pile02_rock029" file="pile02_rock029.obj" />
+    <mesh name="mesh_pile02_rock030" file="pile02_rock030.obj" />
+    <mesh name="mesh_pile02_rock031" file="pile02_rock031.obj" />
+    <mesh name="mesh_pile02_rock032" file="pile02_rock032.obj" />
+    <mesh name="mesh_pile02_rock033" file="pile02_rock033.obj" />
+    <mesh name="mesh_pile02_rock034" file="pile02_rock034.obj" />
+    <mesh name="mesh_pile02_rock035" file="pile02_rock035.obj" />
+    <mesh name="mesh_pile02_rock036" file="pile02_rock036.obj" />
+    <mesh name="mesh_pile02_rock037" file="pile02_rock037.obj" />
+    <mesh name="mesh_pile02_rock038" file="pile02_rock038.obj" />
+    <mesh name="mesh_pile02_rock039" file="pile02_rock039.obj" />
+    <mesh name="mesh_pile02_rock040" file="pile02_rock040.obj" />
+    <mesh name="mesh_pile02_rock041" file="pile02_rock041.obj" />
+    <mesh name="mesh_pile02_rock042" file="pile02_rock042.obj" />
+    <mesh name="mesh_pile02_rock043" file="pile02_rock043.obj" />
+    <mesh name="mesh_pile02_rock044" file="pile02_rock044.obj" />
+    <mesh name="mesh_pile02_rock045" file="pile02_rock045.obj" />
+    <mesh name="mesh_pile02_rock046" file="pile02_rock046.obj" />
+    <mesh name="mesh_pile02_rock047" file="pile02_rock047.obj" />
+    <mesh name="mesh_pile02_rock048" file="pile02_rock048.obj" />
+    <mesh name="mesh_pile02_rock049" file="pile02_rock049.obj" />
+    <mesh name="mesh_pile02_rock050" file="pile02_rock050.obj" />
+    <mesh name="mesh_pile02_rock051" file="pile02_rock051.obj" />
+    <mesh name="mesh_pile02_rock052" file="pile02_rock052.obj" />
+    <mesh name="mesh_pile02_rock053" file="pile02_rock053.obj" />
+    <mesh name="mesh_pile02_rock054" file="pile02_rock054.obj" />
+    <mesh name="mesh_pile02_rock055" file="pile02_rock055.obj" />
+    <mesh name="mesh_pile02_rock056" file="pile02_rock056.obj" />
+    <mesh name="mesh_pile02_rock057" file="pile02_rock057.obj" />
+    <mesh name="mesh_pile02_rock058" file="pile02_rock058.obj" />
+    <mesh name="mesh_pile02_rock059" file="pile02_rock059.obj" />
+    <mesh name="mesh_pile02_rock060" file="pile02_rock060.obj" />
+    <mesh name="mesh_pile02_rock061" file="pile02_rock061.obj" />
+    <mesh name="mesh_pile02_rock062" file="pile02_rock062.obj" />
+    <mesh name="mesh_pile02_rock063" file="pile02_rock063.obj" />
+    <mesh name="mesh_pile02_rock064" file="pile02_rock064.obj" />
+    <mesh name="mesh_pile02_rock065" file="pile02_rock065.obj" />
+    <mesh name="mesh_pile02_rock066" file="pile02_rock066.obj" />
+    <mesh name="mesh_pile02_rock067" file="pile02_rock067.obj" />
+    <mesh name="mesh_pile02_rock068" file="pile02_rock068.obj" />
+    <mesh name="mesh_pile02_rock069" file="pile02_rock069.obj" />
+    <mesh name="mesh_pile02_rock070" file="pile02_rock070.obj" />
+    <mesh name="mesh_pile02_rock071" file="pile02_rock071.obj" />
+    <mesh name="mesh_pile02_rock072" file="pile02_rock072.obj" />
+    <mesh name="mesh_pile02_rock073" file="pile02_rock073.obj" />
+    <mesh name="mesh_pile02_rock074" file="pile02_rock074.obj" />
+    <mesh name="mesh_pile02_rock075" file="pile02_rock075.obj" />
+    <mesh name="mesh_pile02_rock076" file="pile02_rock076.obj" />
+    <mesh name="mesh_pile02_rock077" file="pile02_rock077.obj" />
+    <mesh name="mesh_pile02_rock078" file="pile02_rock078.obj" />
+    <mesh name="mesh_pile02_rock079" file="pile02_rock079.obj" />
+    <mesh name="mesh_pile02_rock080" file="pile02_rock080.obj" />
+    <mesh name="mesh_pile02_rock081" file="pile02_rock081.obj" />
+    <mesh name="mesh_pile02_rock082" file="pile02_rock082.obj" />
+    <mesh name="mesh_pile02_rock083" file="pile02_rock083.obj" />
+    <mesh name="mesh_pile02_rock084" file="pile02_rock084.obj" />
+    <mesh name="mesh_pile02_rock085" file="pile02_rock085.obj" />
+    <mesh name="mesh_pile02_rock086" file="pile02_rock086.obj" />
+    <mesh name="mesh_pile02_rock087" file="pile02_rock087.obj" />
+    <mesh name="mesh_pile02_rock088" file="pile02_rock088.obj" />
+    <mesh name="mesh_pile02_rock089" file="pile02_rock089.obj" />
+    <mesh name="mesh_pile02_rock090" file="pile02_rock090.obj" />
+    <mesh name="mesh_pile02_rock091" file="pile02_rock091.obj" />
+    <mesh name="mesh_pile02_rock092" file="pile02_rock092.obj" />
+    <mesh name="mesh_pile02_rock093" file="pile02_rock093.obj" />
+    <mesh name="mesh_pile02_rock094" file="pile02_rock094.obj" />
+    <mesh name="mesh_pile02_rock095" file="pile02_rock095.obj" />
+    <mesh name="mesh_pile02_rock096" file="pile02_rock096.obj" />
+    <mesh name="mesh_pile02_rock097" file="pile02_rock097.obj" />
+    <mesh name="mesh_pile02_rock098" file="pile02_rock098.obj" />
+    <mesh name="mesh_pile02_rock099" file="pile02_rock099.obj" />
+  </asset>
+  <worldbody>
+    <body name="pile_02" pos="-4.942191124 -9.4914054871 0.0161204804">
+      <geom name="pile02_rock000" type="mesh" mesh="mesh_pile02_rock000" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock001" type="mesh" mesh="mesh_pile02_rock001" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock002" type="mesh" mesh="mesh_pile02_rock002" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock003" type="mesh" mesh="mesh_pile02_rock003" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock004" type="mesh" mesh="mesh_pile02_rock004" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock005" type="mesh" mesh="mesh_pile02_rock005" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock006" type="mesh" mesh="mesh_pile02_rock006" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock007" type="mesh" mesh="mesh_pile02_rock007" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock008" type="mesh" mesh="mesh_pile02_rock008" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock009" type="mesh" mesh="mesh_pile02_rock009" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock010" type="mesh" mesh="mesh_pile02_rock010" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock011" type="mesh" mesh="mesh_pile02_rock011" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock012" type="mesh" mesh="mesh_pile02_rock012" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock013" type="mesh" mesh="mesh_pile02_rock013" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock014" type="mesh" mesh="mesh_pile02_rock014" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock015" type="mesh" mesh="mesh_pile02_rock015" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock016" type="mesh" mesh="mesh_pile02_rock016" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock017" type="mesh" mesh="mesh_pile02_rock017" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock018" type="mesh" mesh="mesh_pile02_rock018" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock019" type="mesh" mesh="mesh_pile02_rock019" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock020" type="mesh" mesh="mesh_pile02_rock020" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock021" type="mesh" mesh="mesh_pile02_rock021" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock022" type="mesh" mesh="mesh_pile02_rock022" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock023" type="mesh" mesh="mesh_pile02_rock023" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock024" type="mesh" mesh="mesh_pile02_rock024" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock025" type="mesh" mesh="mesh_pile02_rock025" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock026" type="mesh" mesh="mesh_pile02_rock026" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock027" type="mesh" mesh="mesh_pile02_rock027" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock028" type="mesh" mesh="mesh_pile02_rock028" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock029" type="mesh" mesh="mesh_pile02_rock029" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock030" type="mesh" mesh="mesh_pile02_rock030" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock031" type="mesh" mesh="mesh_pile02_rock031" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock032" type="mesh" mesh="mesh_pile02_rock032" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock033" type="mesh" mesh="mesh_pile02_rock033" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock034" type="mesh" mesh="mesh_pile02_rock034" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock035" type="mesh" mesh="mesh_pile02_rock035" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock036" type="mesh" mesh="mesh_pile02_rock036" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock037" type="mesh" mesh="mesh_pile02_rock037" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock038" type="mesh" mesh="mesh_pile02_rock038" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock039" type="mesh" mesh="mesh_pile02_rock039" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock040" type="mesh" mesh="mesh_pile02_rock040" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock041" type="mesh" mesh="mesh_pile02_rock041" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock042" type="mesh" mesh="mesh_pile02_rock042" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock043" type="mesh" mesh="mesh_pile02_rock043" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock044" type="mesh" mesh="mesh_pile02_rock044" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock045" type="mesh" mesh="mesh_pile02_rock045" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock046" type="mesh" mesh="mesh_pile02_rock046" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock047" type="mesh" mesh="mesh_pile02_rock047" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock048" type="mesh" mesh="mesh_pile02_rock048" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock049" type="mesh" mesh="mesh_pile02_rock049" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock050" type="mesh" mesh="mesh_pile02_rock050" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock051" type="mesh" mesh="mesh_pile02_rock051" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock052" type="mesh" mesh="mesh_pile02_rock052" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock053" type="mesh" mesh="mesh_pile02_rock053" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock054" type="mesh" mesh="mesh_pile02_rock054" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock055" type="mesh" mesh="mesh_pile02_rock055" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock056" type="mesh" mesh="mesh_pile02_rock056" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock057" type="mesh" mesh="mesh_pile02_rock057" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock058" type="mesh" mesh="mesh_pile02_rock058" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock059" type="mesh" mesh="mesh_pile02_rock059" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock060" type="mesh" mesh="mesh_pile02_rock060" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock061" type="mesh" mesh="mesh_pile02_rock061" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock062" type="mesh" mesh="mesh_pile02_rock062" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock063" type="mesh" mesh="mesh_pile02_rock063" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock064" type="mesh" mesh="mesh_pile02_rock064" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock065" type="mesh" mesh="mesh_pile02_rock065" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock066" type="mesh" mesh="mesh_pile02_rock066" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock067" type="mesh" mesh="mesh_pile02_rock067" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock068" type="mesh" mesh="mesh_pile02_rock068" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock069" type="mesh" mesh="mesh_pile02_rock069" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock070" type="mesh" mesh="mesh_pile02_rock070" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock071" type="mesh" mesh="mesh_pile02_rock071" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock072" type="mesh" mesh="mesh_pile02_rock072" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock073" type="mesh" mesh="mesh_pile02_rock073" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock074" type="mesh" mesh="mesh_pile02_rock074" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock075" type="mesh" mesh="mesh_pile02_rock075" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock076" type="mesh" mesh="mesh_pile02_rock076" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock077" type="mesh" mesh="mesh_pile02_rock077" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock078" type="mesh" mesh="mesh_pile02_rock078" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock079" type="mesh" mesh="mesh_pile02_rock079" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock080" type="mesh" mesh="mesh_pile02_rock080" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock081" type="mesh" mesh="mesh_pile02_rock081" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock082" type="mesh" mesh="mesh_pile02_rock082" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock083" type="mesh" mesh="mesh_pile02_rock083" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock084" type="mesh" mesh="mesh_pile02_rock084" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock085" type="mesh" mesh="mesh_pile02_rock085" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock086" type="mesh" mesh="mesh_pile02_rock086" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock087" type="mesh" mesh="mesh_pile02_rock087" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock088" type="mesh" mesh="mesh_pile02_rock088" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock089" type="mesh" mesh="mesh_pile02_rock089" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock090" type="mesh" mesh="mesh_pile02_rock090" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock091" type="mesh" mesh="mesh_pile02_rock091" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock092" type="mesh" mesh="mesh_pile02_rock092" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock093" type="mesh" mesh="mesh_pile02_rock093" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock094" type="mesh" mesh="mesh_pile02_rock094" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock095" type="mesh" mesh="mesh_pile02_rock095" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock096" type="mesh" mesh="mesh_pile02_rock096" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock097" type="mesh" mesh="mesh_pile02_rock097" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock098" type="mesh" mesh="mesh_pile02_rock098" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+      <geom name="pile02_rock099" type="mesh" mesh="mesh_pile02_rock099" friction="0.9 0.02 0.001" contype="1" conaffinity="1" condim="3" margin="0.001" solref="0.004 1" solimp="0.9 0.95 0.001" group="3" rgba="0.5 0.5 0.52 1" />
+    </body>
+  </worldbody>
+</mujoco>

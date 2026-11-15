@@ -1,0 +1,115 @@
+{
+  "hardware_model": "unknown",
+  "network_interface": "",
+  "calibrated": false,
+  "localization_backend": "icp",
+  "map_size": 40.0,
+  "resolution": 0.1,
+  "robot_radius": 0.32,
+  "safety_margin": 0.12,
+  "base_height": 0.35,
+  "min_obstacle_height": 0.1,
+  "body_clearance": 0.55,
+  "max_step_height": 0.08,
+  "max_slope_deg": 10.0,
+  "max_vx": 0.3,
+  "max_vy": 0.12,
+  "max_wz": 0.55,
+  "acceleration": 0.45,
+  "angular_acceleration": 1.2,
+  "braking": 0.5,
+  "command_timeout": 0.3,
+  "max_sensor_age": 0.3,
+  "max_frame_gap": 0.5,
+  "max_range": 8.0,
+  "min_points": 30,
+  "min_pose_quality": 0.45,
+  "mission_seconds": 180.0,
+  "return_reserve": 35.0,
+  "ball_radius": 0.11,
+  "ball_confirmations": 3,
+  "min_ball_confidence": 0.62,
+  "camera_matrix": [
+    [
+      260.0,
+      0.0,
+      160.0
+    ],
+    [
+      0.0,
+      260.0,
+      120.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "distortion": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "body_from_camera": [
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.24
+    ],
+    [
+      -1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      -1.0,
+      0.0,
+      0.08
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "body_from_lidar": [
+    [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "camera_size": [
+    320,
+    240
+  ],
+  "finish_marker_id": 42,
+  "finish_marker_size": 0.2,
+  "finish_standoff": 0.65
+}

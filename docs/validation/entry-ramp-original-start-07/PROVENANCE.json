@@ -1,0 +1,16 @@
+{
+  "local_source_run": "output/entry-ramp-original-start-07",
+  "included": [
+    "summary.json",
+    "entry-verification.json"
+  ],
+  "excluded_large_source": [
+    "trajectory.jsonl"
+  ],
+  "sha256": {
+    "summary.json": "6dc118f83afd9e541cf6718560a162c5d4fc43186cf2fbc283e705cfd7eeced5",
+    "trajectory.jsonl": "12c6d9d9cb54e052104a58cb5e9993b54dc16f44dca71a1ab64b59226a3dd215",
+    "entry-verification.json": "d00623bbd2a891cdcc85707f1e79f4f600dc481532fb2f97a741ccbc61ffedd4"
+  },
+  "accepted_scope": "original start through local pipe entry and safe interior stop; descent excluded by user; not official completion"
+}
