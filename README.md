@@ -1,60 +1,72 @@
-# Robotics Bench Go2 赛事训练资源包
+# Go2 废墟搜救初版
 
-状态：可分发版本。训练、验证和评测仍以 MuJoCo 物理文件为权威。
+面向 MuJoCo 仿真和实物 Go2 的模块化自主算法。仿真使用开源凸 MPC，实物调用厂家行走接口，不依赖 ROS 2、RL 或训练。
 
-本包面向 MuJoCo 训练、验证与评测，统一收录 Go2 本地训练模型、完整赛事场景、独立障碍及生命探测目标。内部来源版本仅保留在审计元数据中，不用于公开资源分类和目录命名。
+当前验证环境为 **Python 3.10.22、MuJoCo 3.17.0**；Python 3.12 尚未验证。当前成果是固定顺序路线下的自主行走与局部避障原型，完整比赛闭环、自主全覆盖探索和实物部署尚未验收。
 
-## 资源分类
+![早期固定顺序路线规划示意，非完整实测轨迹](docs/images/ordered-route-plan.png)
 
-### 1. Go2 训练模型
+图示为原布局下的早期规划，不代表完整实测。当前本地入口坡已调整，验证到管内停车；后续允许绕行管道。
 
-- `robot/go2/physics/go2.xml`：Unitree Go2 MuJoCo 本地训练物理模型；
-- `robot/go2/physics/assets/`：该模型引用的 16 个 OBJ 网格；
-- `robot/go2/visual/`：与赛事场景一致的 `unitree-go2-pbr-v1` PBR/关节主本体及预览资料；GLB 内嵌 `Walk_InPlace` 循环动作，平台 File Explorer 可自动播放。
+## 安装与运行
 
-`go2.xml` 包含 12 个关节与 12 个电机执行器，是当前本地训练物理基线。`robot/go2/visual/` 中的 GLB、动作和关节元数据只用于视觉、层级及运动学预览，其 Manifest 明确 `physics_authority=false`；两者不能混为同一物理权威文件。`Walk_InPlace` 不是 locomotion policy、控制器、实机轨迹或评分依据。
-
-### 2. 场景资源
-
-- `scene/mujoco/competition-course.mjb`：可直接加载的单文件 MuJoCo 物理场景；
-- `scene/visual/competition-course.glb`：File Explorer 可直接查看的完整场景视觉模型，不内嵌重复的 Go2；
-- `robot/go2/visual/model/unitree-go2.glb`：独立 Go2 视觉模型及循环 walk 动作。
-
-机器人与场景碰撞数据已经编译进 MJB，不再以数百个零散 OBJ 向参赛选手分发。视觉 GLB 不替代 MJB，Blender 制作源文件和制作脚本不进入参赛资源包。
-
-### 3. 障碍资源
-
-`obstacles/` 只包含 9 个独立障碍：5 个整体乱石堆、3 个隧道和 1 个坡道组合。每个乱石堆作为一个独立模型交付，不按单块岩石拆分。每个障碍包含 MuJoCo `model.xml`、`model.mjz`、预览 GLB 和元数据。碰撞层独立于视觉模型：每组乱石堆使用 100 个凸网格，坡道使用与完整场景一致的 161 个凸分解网格；Tunnel2 使用 24 个保持中空通道的凸环段网格，Tunnel3 的 5 个结构碰撞件等形转换为凸网格。Tunnel1 明确设计为不可通行，碰撞定义保持不变。
-
-### 4. 生命探测资源
-
-`life-detection/football/` 包含足球生命探测替代目标的 MuJoCo 模型、MJZ、预览 GLB 和语义元数据。它仅代表赛事目标代理，不代表真实人体或生理信号。
-
-## 运行边界
-
-- 当前平台赛事边界仅为 MuJoCo 训练、验证与评测；
-- 不提供 Isaac Sim / Isaac Lab、Gazebo、Webots 等其他仿真框架的在线运行；
-- RGB 需要独立冻结相机与渲染合同，不能因存在视觉模型就假定策略必然获得 RGB；
-- 正式隐藏布局、目标摆放坐标、裁判真值、评分配置和参赛策略不在本包中。
-
-## 视觉预览约定
-
-- 完整场景、障碍、足球与 Go2 GLB 均使用 glTF 2.0 右手坐标系、Y-up 文件约定，并携带 File Explorer 可直接识别的 `roboticsBench.upAxis=Y` 展示元数据；MuJoCo XML/MJZ/MJB 继续使用 Z-up 物理坐标；
-- 完整场景 GLB 保留原赛事几何范围且恢复与独立障碍一致的暖灰混凝土、灰砖、砂浆和石灰岩 PBR metallic-roughness 参数，不再以白模方式展示；
-- 9 个独立障碍 GLB 使用与赛事全景图一致的石灰岩、暖灰混凝土、灰砖与砂浆 PBR 色彩分组，并显式携带非金属度、粗糙度及基础色参数；
-- 障碍与足球 GLB 通过顶层 `PreviewRootCentered` 展示节点将包围盒中心对齐原点，避免交互旋转时模型偏离视野；内部网格局部坐标保持不变，足球预览同时携带标准 Y-up/PBR 展示契约；
-- Go2 GLB 保持原始本体、层级和材质，在本体层级之外增加明确的 Z-up→Y-up 坐标转换根节点；不参与障碍模型的居中处理；
-- 完整场景视觉预览使用 `scene/visual/competition-course.glb`，且不包含重复机器狗；训练、验证和评测统一加载 `scene/mujoco/competition-course.mjb`；
-- Go2 GLB 的 `Walk_InPlace` 仅由 8 个关节 quaternion 轨道构成，循环播放时不改变根节点位置；
-- 展示根、颜色、金属度和粗糙度均不具备物理权威性。训练、验证和评测仍以 XML、OBJ、MJZ 与 MJB 为准。
-
-## 完整性校验
-
-在本目录执行：
+在项目根目录执行；已有 `.venv` 可跳过安装：
 
 ```bash
-shasum -a 256 -c SHA256SUMS
+python3.10 -m venv .venv
+.venv/bin/python -m pip install -r requirements-v1.lock.txt
+.venv/bin/python -m pip install -e . --no-deps
 ```
 
-所有条目必须返回 `OK`。统一版本和关键入口见 `MANIFEST.json`，原始来源文件与许可边界见 `source-metadata/`、`LICENSES/` 和 `NOTICE.md`。
+桌面可视化，复现当前入管停车路线：
 
+```bash
+.venv/bin/go2-rescue mujoco --viewer --realtime --task-fixture --course-policy ordered --seconds 260 --output "output/run-$(date +%Y%m%d-%H%M%S)"
+```
+
+窗口显示实时前视相机；默认不录屏、不保存原始传感器、物理归档或快照，仅保留小型诊断日志。物理、MPC和导航主要使用 CPU，渲染使用 GPU。`--seconds` 是仿真时限，到时停车不代表任务完成；无桌面运行可去掉 `--viewer`。
+
+```bash
+.venv/bin/python -m pytest -q
+sha256sum -c SHA256SUMS
+```
+
+## 当前完成情况
+
+| 方向 | 已实现 | 当前边界 |
+|---|---|---|
+| 运动控制 | MPC行走、转向、后退、L1上下坡、本地入口坡入管及停车 | 高速与复杂地形稳定性仍需验证 |
+| 定位建图 | 雷达ICP、IMU辅助、关键帧和初步回环；可选KISS-ICP | 长时间漂移、重复走廊和高程一致性待完善 |
+| 规划避障 | 人工指定顺序/航点，在线A*、DWA、机身碰撞检查、局部重规划与脱困 | 已有前沿探索原型，未完成自主全覆盖搜索 |
+| 视觉与任务 | 黑白球圆弧/纹理检测、几何定位、跟踪去重、报位及本地终点事件 | 强遮挡、多球和复杂背景未系统验收；正式赛事协议未适配 |
+| 实物接口 | 厂家SDK封装、传感器接口、限速及超时停车 | 型号、驱动和标定未知，未执行实物运动 |
+
+最近一次全量测试为 **117项通过**。原起点串联已经过L1上下坡、S弯、死胡同进退和碎石区域，约198秒入管、203秒保护停车；该次连续诊断无碰撞、跌倒、进水或越界。未完成出管、终点找球和整场任务，也未建立多次运行成功率。[实测记录](docs/ENTRY_RAMP_NAVIGATION.md)
+
+## 地图、路线与速度
+
+- 官方场景为 `scene/mujoco/competition-course.mjb`，机器人、障碍及球体资源分别在 `robot/`、`obstacles/`、`life-detection/`；原物理/视觉资源保持不变。
+- `--task-fixture` 默认生成本地派生场景，将2号管道出口坡移到当前入口，并增加足球和实验终点。当前保留管内停车保护，**不继续实现出口下降台阶**。
+- 据用户转述，赛事组允许绕行管道。后续优先在原地图上绕行并接通终点任务；**当前代码仍使用原有必经管道路线，绕行尚未实现**。`--pipe-ramp official` 只恢复原布局，不会自动改为绕行。
+- 仿真普通前进上限0.5m/s、明确后退段上限0.25m/s，入口坡另受0.22m/s航点限速。可用 `--max-speed`、`--max-reverse-speed` 调整普通限速；实际平均速度还受转向、制动、规划和步态稳定性影响。
+- 当前顺序模式适合已知地图与回归测试。任务顺序和关键航点由人工指定，局部路径在线计算；`--course-policy explore` 仅提供探索原型，不能视为全覆盖完成。
+
+## 主要问题与后续分工
+
+| 负责方向 | 优先改进内容 |
+|---|---|
+| 运动控制 | 分地形限速、加减速与速度跟踪；平衡0.5m/s目标与稳定性，验证快速转弯/后退 |
+| 定位建图 | 降低稀疏雷达漂移，完善坡面高程、退化处理、传感器标定及时间同步 |
+| 规划与探索 | 原地图绕行；死胡同沿安全来路后退、到宽处转向；减少严格航点停走，完善区域探索和视觉补扫 |
+| 视觉感知 | 测试遮挡球、相似石块、多球和滚动球；统计召回、误报、重复报告及位置误差 |
+| 系统与测试 | 接通找球报位和终点流程，适配正式协议及实物驱动；性能分析、多场景回归与Python 3.12兼容验证 |
+
+当前死胡同阶段仍约38秒，其中约16.7秒处于朝向对齐状态；导航计算P95约151ms，超过10Hz的100ms预算。优化需要同时覆盖转弯流程、计算耗时和控制稳定性。
+
+推进顺序：**原地图绕行闭环＋死胡同/性能优化 → 自主覆盖探索与视觉泛化 → 实物标定与验收**。实物继续使用厂家运控；未知设备配置保持 `calibrated=false`，默认不发送运动指令。报位使用起点局部坐标，本地ArUco终点不代表正式赛事接口。
+
+## 资源与详细说明
+
+- [架构与接口](docs/ARCHITECTURE.md) · [实物接入](docs/HARDWARE_ADAPTER.md) · [本地场景与相机](docs/LOCAL_MAP.md) · [速度设置](docs/SPEED.md)
+- [官方资源说明原文](source-metadata/training-package-original/README.md)及原始校验清单已备份；根目录 `SHA256SUMS` 的README条目指向该原文，其他资源校验条目保持不变。
+- 开源MPC源码及许可证保留在 `third_party/go2_convex_mpc/`；资源许可见 `NOTICE.md`、`LICENSES/` 和 [第三方说明](THIRD_PARTY_V1.md)。

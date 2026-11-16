@@ -47,7 +47,7 @@ ArUco 42 is a lab-only completion proxy. Competition world alignment and termina
 ## Entry points
 
 `src/go2_rescue/cli.py`: init-config, finish-marker, demo, replay, live, native, mujoco.
-See README_V1.zh-CN.md for run commands and docs/HARDWARE_ADAPTER.md for hardware provider requirements.
+See README.md for run commands and docs/HARDWARE_ADAPTER.md for hardware provider requirements.
 Simulation design/provenance and run results are in docs/MUJOCO.md. Its native model adapter reads plant joints/IMU, not root pose/twist; the renderer and diagnostics can inspect truth, but Frame and Autonomy do not receive it.
 Simulation MPC additionally estimates a near-foot support plane from body-frame lidar; upstream swing XY/timing are retained while touchdown Z and COM height/pitch/roll follow that plane. Joint/contact-scheduled vertical velocity is integrated rather than forcing the estimated support to a constant flat-world height. No scene geometry/true height is passed to the controller.
 

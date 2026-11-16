@@ -2,6 +2,14 @@
 
 2026-11-16, Asia/Shanghai. Original source workspace had no Git metadata; publishing checkout preserves the existing GitHub history. No real-hardware execution. Read AGENTS.md first.
 
+## Documentation consolidation and next-route requirement
+
+2026-11-16: user requested one concise root README combining runtime instructions, actual progress, limitations and responsibilities. README_V1.zh-CN.md is merged and removed; original official README/SHA256SUMS are byte-for-byte archived in source-metadata/training-package-original/. Root checksum list changes only the original README path. Physical/visual assets and algorithm code are unchanged. Local Git checkout was merged to main b245201 via PR1; the user has now authorized publishing the consolidated README and supplied route illustration. Verify the publication commit from Git.
+
+The supplied image is copied unchanged to docs/images/ordered-route-plan.png and captioned as an early original-layout plan, not a completed run.
+
+User reports organizers permit bypassing the pipe. This changes the proposed next route, not existing code: current ordered route still requires pipe2 and stops under its drop guard. No descent implementation requested. Python3.10.22 remains the validated baseline;3.12 and autonomous coverage exploration are unvalidated. See README.md for concise scope and team responsibilities.
+
 ## Accepted V1 scope and latest verified result
 
 2026-11-16: the user explicitly ends V1 at the current safe stop inside circular pipe2. Do not implement the east22cm descent in this delivery. Subsequent pipe exit, far-finish ball/report and official finish remain outside this accepted milestone; do not relabel the runtime as a completed competition mission.
@@ -91,4 +99,4 @@ Ramp recovery is slow and estimated ground consistency is imperfect. Historic fu
 
 Latest full suite:117passed47.03s after entry-ramp integration;105passed43.44s after the dead-end response change;96passed36.38s was the speed change;90passed68.63s was the earlier tube-stage milestone. No active simulation. Official SHA256SUMS, pip check and compileall passed this turn. Scene SHA256:2dd875d238040d9a8616869cb2e30d00abf131b48b89b011af6dc10bd264089c.
 
-README_V1.zh-CN.md, docs/PIPE2.md, docs/COMPETITION_V1.md, docs/ARCHITECTURE.md, docs/VALIDATION.md. Use .venv/bin/python from project root and new output directories. Never label a custom-reset stage as full-course success.
+README.md, docs/PIPE2.md, docs/COMPETITION_V1.md, docs/ARCHITECTURE.md, docs/VALIDATION.md. Use .venv/bin/python from project root and new output directories. Never label a custom-reset stage as full-course success.

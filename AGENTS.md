@@ -29,7 +29,7 @@
 - The user additionally authorized MuJoCo simulation with an open-source MPC controller. Simulation uses pinned go2-convex-mpc; preserve both native and simulation backends and the common Autonomy interface.
 - Simulation root truth is for sensor generation/rendering/diagnostics only. Do not drive navigation from truth, overwrite root state during stepping, or label a derived local task scene as the unchanged official MJB.
 - Hardware model and sensors are unknown. Keep calibrated=false in the supplied unknown-device template. Do not claim real-robot validation from synthetic tests.
-- Preserve original resource files covered by SHA256SUMS, including the official README.md. New runtime documentation is README_V1.zh-CN.md.
+- Preserve original physical/visual resources covered by SHA256SUMS. The user authorized consolidating runtime/status documentation into root README.md; original official README and SHA256SUMS are archived byte-for-byte in source-metadata/training-package-original/. Root SHA256SUMS redirects only its original README entry to that archive.
 - The user subsequently authorized a local map variant moving the original east pipe2 ramp to the west entrance. --task-fixture now defaults to this labelled entry-ramp variant; --pipe-ramp official restores the original layout. Preserve source files and provenance; never count modified geometry as official full-course evidence.
 - On 2026-11-16 the user accepted V1 ending at the current safe stop inside pipe2 and cancelled further exit-descent work. Preserve the drop guard and truthful incomplete-competition diagnostics; do not implement descent without a new request.
 - Use .venv/bin/python; tests: .venv/bin/python -m pytest -q. Runtime entry: go2-rescue (src/go2_rescue/cli.py).

@@ -48,3 +48,9 @@ In this local terrain region only, reuse the upstream1.5Hz/75% stance gait, boun
 The user explicitly cancels further descent implementation and accepts current pipe-interior stop as V1 scope. Keep the existing physical drop guard and truthful time_limit/mission_complete=false/full_course_pass=false diagnostics. Do not change geometry, fabricate finish events or label this official competition completion. Preserve later components as unvalidated work outside this milestone.
 
 Replace the user's old unitree_map_nav repository tree with the current runnable project on a separate branch, then use a history-preserving merge. Preserve official resource hashes/licenses and pinned MPC source. Exclude environment, output recordings, caches and credentials; preserve local source workspace and all remote history.
+
+## 2026-11-16: one concise README and optional pipe bypass
+
+The user explicitly requests merging the official resource overview, README_V1 and current progress/issues/work allocation into root README.md. This supersedes the old root-README immutability rule for documentation only. Preserve original official README and SHA256SUMS bytes in source-metadata/training-package-original/; redirect only the README path in the root checksum list, retaining every resource hash and all other paths. Remove the redundant README_V1 and update references. No runtime code or physical/visual asset changes.
+
+The user reports organizers allow bypassing the pipe. Prioritize validating an original-layout detour to finish in a future implementation; current mandatory pipe route/drop guard remain unchanged. No exit descent work. Python3.10.22 is the tested baseline;3.12 compatibility and autonomous coverage remain future validation tasks.
