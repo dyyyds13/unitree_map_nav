@@ -1,0 +1,5 @@
+{
+  "scope": "local scene setup only; never an autonomy input",
+  "model": "life-detection/football/model.xml",
+  "positions_world_xy": [[6.2, 3.5], [7.25, 1.4], [9.2, 2.0]]
+}

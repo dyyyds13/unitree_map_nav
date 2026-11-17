@@ -338,7 +338,8 @@ def test_sensor_raycast_hides_robot_without_altering_collision_or_render_groups(
     assert np.array_equal(before, model.geom_group)
 
 
-def test_default_task_is_in_far_finish_area_not_visible_from_start(tmp_path):
+@pytest.mark.parametrize("fast_render", [False, True])
+def test_default_task_is_in_far_finish_area_not_visible_from_start(tmp_path, fast_render):
     model = task_scene(ROOT, tmp_path, (.8, .8))
     provenance = json.loads((tmp_path / "scene_provenance.json").read_text())
     assert provenance["task_layout"] == "finish-area"
@@ -356,7 +357,7 @@ def test_default_task_is_in_far_finish_area_not_visible_from_start(tmp_path):
                if ball_geom in (c.geom1, c.geom2))
     config = simulation_config(task_fixture=True)
     assert config.mission_seconds > 20.
-    sensors = SimSensors(model, data, config)
+    sensors = SimSensors(model, data, config, fast_render=fast_render)
     perception = Perception(config)
     try:
         initial = sensors.observe(Velocity())
@@ -415,3 +416,37 @@ def test_simulation_media_is_explicit_opt_in(tmp_path, capsys):
         assert (tmp_path/name).exists(), name
     with np.load(tmp_path/"physics.npz") as physics:
         assert len(physics["states"]) >= 8
+
+
+def test_slow_viewer_does_not_refresh_every_physics_tick(tmp_path, monkeypatch):
+    from types import SimpleNamespace
+    import mujoco.viewer
+    import go2_rescue.mujoco_sim as sim
+
+    # Model a renderer slower than its wall-clock refresh interval, without
+    # sleeping or requiring a desktop. Physics must still advance between
+    # display updates instead of synchronizing every 2 ms integration tick.
+    wall = [0.]
+    def clock():
+        wall[0] += .01
+        return wall[0]
+
+    def sync():
+        wall[0] += .2
+
+    viewer = SimpleNamespace(
+        opt=SimpleNamespace(geomgroup=np.ones(6)),
+        user_scn=mujoco.MjvScene(),
+        cam=SimpleNamespace(lookat=np.zeros(3)),
+        viewport=SimpleNamespace(width=640, height=480),
+        is_running=lambda: True, set_texts=lambda *args: None, sync=sync)
+    monkeypatch.setattr(mujoco.viewer, "launch_passive", lambda *args: viewer)
+    monkeypatch.setattr(sim, "time", SimpleNamespace(monotonic=clock, sleep=lambda _: None))
+    monkeypatch.setattr(sim, "finish_viewer", lambda *args: None)
+    args = SimpleNamespace(output=str(tmp_path), config=None, seconds=.2,
+                           spawn=[.8, .8], control="smoke", task_fixture=False,
+                           viewer=True, viewer_fps=15, realtime=False, record=False, seed=0)
+    summary = sim.run_simulation(args)
+    assert summary["simulation_seconds"] == pytest.approx(.2)
+    assert 1 <= summary["compute"]["viewer_syncs"] <= 3
+    assert summary["timing_p95_seconds"]["viewer_sync"] >= .2

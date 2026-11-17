@@ -1,5 +1,14 @@
 # Architecture and Research Decisions
 
+## 2026-11-17: mapping coverage, incidental vision, no panoramic scans
+
+User explicitly replaces panoramic scanning with continuous detection during mapping. Use fixed public field bounds and configurable90% estimated occupancy coverage to trigger east-side return; never derive the denominator from already known space. Camera visibility and victim recall are separate metrics. Keep finite mission/time-reserve protection with an explicit unmet-coverage reason. Do not fabricate official target transport.
+
+
+## 2026-11-16: multi-victim search and optional pipe bypass
+
+The user's latest task supersedes the pipe-interior endpoint for a separate search mode. Preserve legacy ordered mode. Instantiate three original life-detection footballs near rubble and remove the finish ball in the new scene variant, without editing source resources. Retain the tested entry/S/dead-end bootstrap, then explore observed map frontiers and camera viewpoints with existing footprint/support/water constraints. Unknown victim count must not terminate after one report. Keep placement coordinates out of navigation; public finish approach points are explicit separate priors. The user says to defer official target/termination messaging if the current folder lacks documentation; do not invent a protocol or call local events official signals. Coverage is measured only over observed floor and never claimed globally complete without independent evidence.
+
 ## 2026-11-15: add official MuJoCo + open-source MPC, preserve real backend
 
 Explicitly requested by the user after the real-robot V1. Use the same Autonomy and sensor Frame interfaces. Pin MIT-licensed go2-convex-mpc rather than introduce RL. Adapt it to the supplied model using MuJoCo-native mass/inertia/Jacobians, named joints and IMU/leg-kinematic odometry; no second URDF/Pinocchio model is required.

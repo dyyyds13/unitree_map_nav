@@ -1,0 +1,56 @@
+{
+  "source": "scene/mujoco/competition-course.mjb",
+  "sha256": "2dd875d238040d9a8616869cb2e30d00abf131b48b89b011af6dc10bd264089c",
+  "scene_kind": "local_entry_ramp_plus_task_objects",
+  "pipe_ramp": "entry",
+  "geometry_changes": [
+    {
+      "source_geom": "tunnel2_to3_sloped_continuous_threshold",
+      "operation": "rotate 180 degrees about tunnel2 centre; move east ramp to west entrance",
+      "center_world_xyz": [
+        9.599999904632565,
+        6.220000028610228,
+        0.1455000005662441
+      ],
+      "new_world_position": [
+        8.383332888538925,
+        6.220000028610226,
+        0.0733333315621991
+      ]
+    }
+  ],
+  "imported_geoms": 772,
+  "max_geometry_vertex_error_m": 1.1881188114367931e-08,
+  "task_layout": "rubble-search",
+  "diagnostics_only_placements": {
+    "football_world_xyz": null,
+    "footballs_world_xyz": [
+      [
+        6.2,
+        3.5,
+        0.11
+      ],
+      [
+        7.25,
+        1.4,
+        0.11
+      ],
+      [
+        9.2,
+        2.0,
+        0.11
+      ]
+    ],
+    "finish_marker_world_xyz": [
+      11.000000380000001,
+      8.8,
+      0.43
+    ]
+  },
+  "football_source": "life-detection/football/model.xml",
+  "additions": [
+    "3 dynamic football(s)",
+    "local ArUco marker",
+    "light"
+  ]
+}

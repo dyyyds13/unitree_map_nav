@@ -229,13 +229,14 @@
         {
           "xy": [
             3.55,
-            3.2
+            3.4
           ],
           "yaw": -1.5707963267948966,
           "tolerance": 0.25,
           "inspect_front": true,
           "hold_seconds": 1.0,
-          "strict": true
+          "strict": true,
+          "max_forward_mps": 0.12
         },
         {
           "xy": [

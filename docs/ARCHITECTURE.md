@@ -1,5 +1,7 @@
 # Architecture
 
+New local search mission: `CoverageSearch` owns goals after the ordered bootstrap completes dead_end and two narrow exit-portal poses; `OrderedCourse` then relinquishes ownership, and circular tube2 traversal is optional. Frontier mapping goals (no camera panoramas or visual viewpoint detours) use observed GridMap + A*/DWA and the existing recovery tools, emitting the same Velocity interface to unchanged MPC. Perception/tracking run throughout search with unknown target count. Finish approach from the east is a public-map prior in configs/search-route.json; scene-only football coordinates stay in configs/rubble-search-layout.json. A fixed public field rectangle defines occupancy coverage; at the configured90% threshold, or explicitly labelled time reserve, search latches return. Official reporting transport is deferred by explicit user instruction; events remain local. See SEARCH_MISSION.md for coverage limits and evidence.
+
 ## Data flow
 
 ```text

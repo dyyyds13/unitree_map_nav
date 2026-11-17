@@ -53,6 +53,13 @@ class Config:
     course_route: str = ""  # Explicit fixed-map prior, never simulator state.
     course_portal_resolution: float = 0.  # Optional finer local-course map after ramp/S/dead end.
     allow_margin_escape: bool = False  # Known simulated envelope only by default.
+    search_mission: bool = False
+    search_coverage_threshold: float = .90
+    search_bounds: list = field(default_factory=list)  # Public map_start rectangle [xmin,xmax,ymin,ymax].
+    search_detection_range: float = 3.5  # Distant ground-ray hypotheses are too uncertain to report.
+    search_finish_approach: list = field(default_factory=list)  # Public-map priors, never victim coordinates.
+    search_finish_gate_yaw: float | None = None  # Heading of a declared approach passage.
+    search_finish_gate_index: int | None = None
     ball_radius: float = 0.11
     ball_confirmations: int = 3
     min_ball_confidence: float = 0.62
@@ -79,7 +86,8 @@ class Config:
         positive = [self.map_size, self.resolution, self.robot_radius, self.base_height,
                     self.acceleration, self.angular_acceleration, self.braking, self.command_timeout,
                     self.max_sensor_age, self.max_frame_gap, self.max_range, self.max_vx,
-                    self.max_wz, self.max_reverse_vx, self.passage_max_vx, self.mission_seconds, self.ball_radius, self.finish_marker_size]
+                    self.max_wz, self.max_reverse_vx, self.passage_max_vx, self.mission_seconds, self.ball_radius,
+                    self.search_detection_range, self.finish_marker_size]
         if min(positive) <= 0 or self.max_vy < 0 or self.safety_margin < 0:
             raise ValueError("Invalid positive geometry/timing/speed limits")
         if not 0 < self.return_reserve < self.mission_seconds:
@@ -88,6 +96,22 @@ class Config:
             raise ValueError("target_quota must be a nonnegative declared count")
         if not isinstance(self.course_route, str):
             raise ValueError("course_route must be a path string")
+        if not isinstance(self.search_mission, bool):
+            raise ValueError("search_mission must be boolean")
+        if not 0 < self.search_coverage_threshold <= 1:
+            raise ValueError("search_coverage_threshold must be in (0,1]")
+        bounds = np.asarray(self.search_bounds, dtype=float)
+        if bounds.size and (bounds.shape != (4,) or not np.isfinite(bounds).all() or
+                            not (bounds[0] < bounds[1] and bounds[2] < bounds[3])):
+            raise ValueError("search_bounds must be finite [xmin,xmax,ymin,ymax]")
+        approach = np.asarray(self.search_finish_approach, dtype=float)
+        if approach.size and (approach.ndim != 2 or approach.shape[1] != 2 or not np.isfinite(approach).all()):
+            raise ValueError("search_finish_approach must contain finite map-frame xy pairs")
+        if self.search_finish_gate_yaw is not None and not np.isfinite(self.search_finish_gate_yaw):
+            raise ValueError("search_finish_gate_yaw must be finite or null")
+        if self.search_finish_gate_index is not None and (not isinstance(self.search_finish_gate_index,int) or
+                not 0 <= self.search_finish_gate_index < len(self.search_finish_approach)):
+            raise ValueError("search_finish_gate_index must identify an approach point")
         if self.course_portal_resolution != 0. and not (0 < self.course_portal_resolution <= self.resolution
                                                        and self.map_size/self.course_portal_resolution <= 1200):
             raise ValueError("course_portal_resolution must be zero or a supported finer map resolution")

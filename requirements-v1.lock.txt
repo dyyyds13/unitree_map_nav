@@ -1,4 +1,5 @@
-# Verified Python 3.10.22 / Ubuntu 20.04 x86_64. Includes optional MuJoCo simulation dependencies; native SDK not installed.
+# Verified Python 3.12.3 / Ubuntu 24.04 x86_64 (WSL2), and Python 3.10.22 / Ubuntu 20.04 x86_64.
+# Includes optional MuJoCo simulation dependencies; native SDK not installed.
 absl-py==2.5.1
 annotated-doc==0.0.6
 annotated-types==0.8.0

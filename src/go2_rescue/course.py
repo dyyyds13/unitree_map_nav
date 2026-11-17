@@ -209,7 +209,7 @@ class OrderedCourse:
         Clearance-weighted A* avoids cutting the inside of narrow corners.
         """
         free = grid.traversable()
-        corridor = bool(self.waypoint.get("observed_corridor")) and grid.c.footprint_half_length > 0
+        corridor = bool(self.waypoint.get("observed_corridor") or self.waypoint.get("oriented_passage")) and grid.c.footprint_half_length > 0
         corridor_offsets = None
         if corridor:
             # In a declared straight passage, plan with the same full oriented

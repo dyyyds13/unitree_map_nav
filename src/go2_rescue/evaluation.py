@@ -30,6 +30,14 @@ class SimulationEvaluator:
         self.water_episodes = self.boundary_episodes = 0
         self.was_wet = self.was_outside = False
         self.target_errors = []
+        self.search_mission = False
+        self.target_bodies = [i for i in range(model.nbody) if
+            (model.body(i).name or "") == "local_football" or
+            (model.body(i).name or "").startswith("victim_") and
+            (model.body(i).name or "").endswith("life_detection_football")]
+        self.matched_target_bodies = set()
+        self.false_target_reports = 0
+        self.duplicate_target_reports = 0
         self.max_base_height = 0.
         self.map_anchor_timestamp = None
         self.ordered_stages = []
@@ -119,12 +127,19 @@ class SimulationEvaluator:
             if event.kind == "course_stage_complete":
                 self.ordered_stages.append(event.payload["stage"])
             if event.kind == "target":
-                try:
-                    actual = data.body("local_football").xpos[:2]
-                except KeyError:
+                if not self.target_bodies:
                     continue
                 report = self.initial + self.map_rotation @ np.asarray(event.payload["position"])
-                self.target_errors.append(float(np.linalg.norm(report - actual)))
+                distances = np.linalg.norm(data.xpos[self.target_bodies, :2]-report, axis=1)
+                nearest = int(np.argmin(distances))
+                error = float(distances[nearest])
+                self.target_errors.append(error)
+                if error > .5:
+                    self.false_target_reports += 1
+                elif self.target_bodies[nearest] in self.matched_target_bodies:
+                    self.duplicate_target_reports += 1
+                else:
+                    self.matched_target_bodies.add(self.target_bodies[nearest])
 
     def report(self, data, mission_complete, fell):
         xy = data.xpos[self.robot, :2]
@@ -134,11 +149,17 @@ class SimulationEvaluator:
         terrain_order = all(k in terrain for k in ["ascent", "platform", "descent"]) and terrain["ascent"] < terrain["platform"] < terrain["descent"]
         ordered_verified = bool(self.ordered_stages == STAGES and terrain_order and self.dead_end_exited
                                 and self.rubble_area_visited and self.pipe_passage_verified)
+        all_targets = bool(self.target_bodies and len(self.matched_target_bodies) == len(self.target_bodies))
         return {"scope": "local scene diagnostics; not official scoring",
+                "search_mission": self.search_mission, "pipe_required": not self.search_mission,
+                "placed_targets": len(self.target_bodies), "unique_targets_found": len(self.matched_target_bodies),
+                "all_placed_targets_found": all_targets, "false_target_reports": self.false_target_reports,
+                "duplicate_target_reports": self.duplicate_target_reports,
+                "official_signals_sent": False,
                 "ordered_stages_completed": self.ordered_stages.copy(), "ordered_traversal_verified": ordered_verified,
                 "dead_end_entered": bool(self.dead_end_entered), "dead_end_exited": bool(self.dead_end_exited),
                 "rubble_area_visited": bool(self.rubble_area_visited), "pipe_passage_verified": self.pipe_passage_verified,
-                "required_pipe": "tunnel2", "pipe2_floor_contact": self.pipe2_floor_contact,
+                "required_pipe": None if self.search_mission else "tunnel2", "pipe2_floor_contact": self.pipe2_floor_contact,
                 "course_waypoint_errors_m": self.course_waypoint_errors.copy(),
                 "obstacle_contact_episodes": len(self.incidents), "contacts": self.incidents,
                 "water_entry_episodes": self.water_episodes, "out_of_bounds_episodes": self.boundary_episodes,
@@ -147,5 +168,6 @@ class SimulationEvaluator:
                 "map_anchor_timestamp": self.map_anchor_timestamp, "map_anchor_world_xy": self.initial.tolist(),
                 "target_error_p90_m": float(np.quantile(self.target_errors, .9)) if self.target_errors else None,
                 "local_task_pass": bool(mission_complete and self.target_errors and not fell and inside_finish
+                                        and (all_targets if self.search_mission else True)
                                         and max(self.target_errors) <= .5
                                         and not self.incidents and not self.water_episodes and not self.boundary_episodes)}

@@ -15,12 +15,20 @@ from .tracking import Tracker
 from .types import Event, Frame, Step, Velocity
 from .hazards import WaterDetector
 from .course import OrderedCourse
+from .search import CoverageSearch
 
 
 class Autonomy:
     def __init__(self, config: Config):
         self.c = config
         self.course = OrderedCourse(config.course_route) if config.course_route else None
+        self.search = CoverageSearch(config) if config.search_mission else None
+        if self.search is not None and self.course is not None:
+            # These declared straight, flat exit poses need the oriented
+            # body envelope, like the existing pipe planner, not disk inflation.
+            for waypoint in self.course.stages[4]["waypoints"][:2]:
+                if waypoint.get("narrow_passage") and "yaw" in waypoint:
+                    waypoint["oriented_passage"] = True
         if self.course is not None:
             for region in self.course.definition.get("terrain_slope_regions", []):
                 if region not in config.terrain_slope_regions:
@@ -82,6 +90,8 @@ class Autonomy:
                               "reported_targets": len(self.tracker.reported_positions)}
         if self.course is not None:
             result.diagnostics["course"] = self.course.diagnostics()
+        if self.search is not None:
+            result.diagnostics["search"] = self.search.diagnostics(self.grid)
         return result
 
     def ordered_step(self, frame, pose, points, events, dt):
@@ -171,7 +181,7 @@ class Autonomy:
         self.goal = self.current_path[-1].copy()
         heading = desired if strict_heading or np.linalg.norm(target-pose.xy()) < .45 else None
         planning_velocity = frame.velocity
-        if course.waypoint.get("observed_corridor") and len(course.motion_window) >= 3:
+        if (course.waypoint.get("observed_corridor") or course.waypoint.get("oriented_passage")) and len(course.motion_window) >= 3:
             window = course.motion_window
             duration = window[-1][0]-window[0][0]
             if .19 <= duration <= .6:
@@ -252,6 +262,8 @@ class Autonomy:
         if pose.quality < self.c.min_pose_quality:
             return Step(Velocity(), pose, self.state, [], "localization_unreliable")
         if self.localization.corrections:
+            if self.search is not None:
+                self.search.correct_map(self.grid,self.localization.corrections)
             corrected_hazards = []
             for polygon in self.hazard_observations:
                 center = polygon.mean(axis=0)
@@ -334,6 +346,19 @@ class Autonomy:
                 events.append(Event("course_map_refined", frame.timestamp, {
                     "from_m": old_resolution, "to_m": resolution,
                     "source": "recorded keyframe observations and estimated poses"}))
+            if self.search is not None and self.course.stage == "rubble" and self.course.waypoint_index >= 2:
+                # Preserve entry/S/dead-end and its two narrow exit poses, then give
+                # goal ownership to observed-space exploration. Pipe stages
+                # are deliberately not required by this separate mission.
+                completed = self.course.completed.copy()
+                self.course = None
+                self.goal = None
+                self.recovery_path, self.recovery_index = np.empty((0, 3)), 0
+                self.margin_escape_active = False
+                events.append(Event("search_started", frame.timestamp, {
+                    "bootstrap_stages": completed, "pipe_required": False,
+                    "rubble_exit_portal_waypoints": 2,
+                    "target_count_known": False, "official_signals_enabled": False}))
         marker_visible = False
         detections = []
         if frame.image is not None and frame.image_age <= self.c.max_sensor_age:
@@ -342,7 +367,7 @@ class Autonomy:
                 self.grid.add_hazard(polygon)
                 self.hazard_observations.append(polygon)
             self.hazard_observations = self.hazard_observations[-200:]
-            if self.course is None or self.course.stage == "finish_search":
+            if self.search is not None or self.course is None or self.course.stage == "finish_search":
                 detections = [self.perception.locate_ball(d, frame, pose) for d in self.perception.detect_balls(image)]
                 events.extend(self.tracker.update(detections, pose, frame.timestamp))
             finish = self.perception.finish(image, frame, pose)
@@ -361,6 +386,8 @@ class Autonomy:
             self.progress_yaw = pose.yaw
         if self.course is not None and not self.course.route_complete:
             return self.ordered_step(frame, pose, points, events, dt)
+        if self.search is not None:
+            return self.search.command(self, frame, pose, points, events, dt)
         quota_met = self.c.target_quota > 0 and len(self.tracker.reported_positions) >= self.c.target_quota
         returning = elapsed >= self.c.mission_seconds - self.c.return_reserve or quota_met
         finish_reachable = self.finish_goal is not None and bool(astar(self.grid.traversable(), self.grid.cell(pose.xy()), self.grid.cell(self.finish_goal)))

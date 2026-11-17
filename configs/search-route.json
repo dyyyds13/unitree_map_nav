@@ -1,0 +1,14 @@
+{
+  "coverage_threshold": 0.90,
+  "exploration_bounds": [-0.8, 11.2, -0.8, 9.2],
+  "coverage_note": "Public 12m by 10m field bounds in map_start; observed free/occupied cells, not traversable floor or victim visibility.",
+  "coordinate_frame": "map_start",
+  "source": "manually authored public-map priors; not runtime simulator state",
+  "bootstrap_route": "configs/local-entry-ramp-route.json",
+  "bootstrap_until": "dead_end plus first two rubble exit-portal waypoints",
+  "finish_approach": [[10.8, 4.4], [10.8, 7.7], [9.4, 7.8]],
+  "finish_gate_yaw": 1.5707963267948966,
+  "finish_gate_index": 1,
+  "finish_approach_note": "East approach avoids circular tube2; the flat rectangular east passage can be used. West finish opening is too narrow for the configured body.",
+  "pipe_required": false
+}

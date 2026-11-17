@@ -200,7 +200,7 @@ class Explorer:
         i = valid[int(np.argmin(costs))]
         return np.column_stack([positions[i], headings[i]])
 
-    def choose(self, grid: GridMap, pose: Pose, timestamp: float) -> np.ndarray | None:
+    def choose(self, grid: GridMap, pose: Pose, timestamp: float, bounds=None) -> np.ndarray | None:
         free = grid.traversable()
         start = grid.cell(pose.xy())
         if not grid.inside(start) or not free[start]:
@@ -209,6 +209,10 @@ class Explorer:
         reachable = components == components[start]
         # A frontier can border unobserved visibility OR unconfirmed support.
         frontier = free & reachable & binary_dilation(~(grid.seen & np.isfinite(grid.floor)))
+        if bounds:
+            x0,x1,y0,y1 = bounds
+            centers = grid.origin[:,None]+(np.arange(grid.n)+.5)*grid.c.resolution
+            frontier &= ((centers[0]>=x0)&(centers[0]<x1))[:,None] & ((centers[1]>=y0)&(centers[1]<y1))[None,:]
         groups, count = label(frontier)
         candidates = []
         if grid.c.footprint_half_length:

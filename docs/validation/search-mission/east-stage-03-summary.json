@@ -1,0 +1,137 @@
+{
+  "status": "completed",
+  "stop_reason": "mission_finished",
+  "run_scope": "custom_start_stage_test",
+  "initial_yaw": 1.5707963267948966,
+  "course_policy": "explore",
+  "ordered_course": null,
+  "search": {
+    "returning": true,
+    "viewpoints": 0,
+    "observed_floor_area_m2": 12.290000000000003,
+    "camera_observed_floor_area_m2": 8.607500000000002,
+    "camera_fraction_of_observed_floor": 0.700366151342555,
+    "coverage_scope": "observed floor only; not a claim of full scene coverage",
+    "official_signals_enabled": false
+  },
+  "task_layout": "rubble-search",
+  "mission_complete": true,
+  "time_limit_seconds": 180.0,
+  "error": null,
+  "scene": "local_entry_ramp_plus_task_objects",
+  "control": "autonomy",
+  "pipe_ramp": "entry",
+  "modified_course_geometry": true,
+  "physics": "MuJoCo rigid-body dynamics; torque actuators; mj_step only",
+  "controller": "go2-convex-mpc@1c63c6a762779887ab0431fd60db681dede6cb32",
+  "state_estimation": "joint/IMU contact-scheduled kinematics, no plant root pose input",
+  "mujoco": "3.17.0",
+  "simulation_seconds": 80.00199999999495,
+  "wall_seconds": 151.64633689099992,
+  "fell": false,
+  "mpc_solves": 3334,
+  "events": [
+    {
+      "kind": "start",
+      "timestamp": 0.6000000000000004,
+      "payload": {
+        "coordinate_frame": "map_start"
+      }
+    },
+    {
+      "kind": "search_return",
+      "timestamp": 0.7000000000000005,
+      "payload": {
+        "reason": "return_time_reserve"
+      }
+    },
+    {
+      "kind": "finish",
+      "timestamp": 79.99999999999496,
+      "payload": {
+        "method": "local_aruco_standoff",
+        "official_signal_sent": false
+      }
+    }
+  ],
+  "mission_state": "finished",
+  "mpc_terrain_updates": 795,
+  "observations": 795,
+  "nav_p95_seconds": 0.12837461949957285,
+  "recording": {
+    "video": false,
+    "raw": false,
+    "physics": false,
+    "snapshots": false
+  },
+  "compute": {
+    "physics": "CPU",
+    "mpc": "CPU",
+    "autonomy": "CPU",
+    "blas_threads": 1,
+    "graphics_device": "D3D12 (NVIDIA GeForce RTX 5060 Laptop GPU)",
+    "viewer_syncs": 0,
+    "front_camera_updates": 0,
+    "fast_render": true
+  },
+  "timing_p95_seconds": {
+    "sensors_and_terrain": 0.15325717020023144,
+    "autonomy": 0.12837461949957285,
+    "mpc_update": 0.003655328450258821,
+    "physics_step": 0.00012801405000573138,
+    "viewer_sync": null
+  },
+  "final_map_resolution_m": 0.05,
+  "mpc_qp_p95_seconds": 0.0016258522000043739,
+  "diagnostics_only": {
+    "initial_world_position": [
+      11.6,
+      4.8,
+      0.3
+    ],
+    "final_world_position": [
+      10.262320491112874,
+      8.520028275334525,
+      0.32814140638666967
+    ],
+    "displacement_m": 3.9532261303630056
+  },
+  "evaluation": {
+    "scope": "local scene diagnostics; not official scoring",
+    "search_mission": true,
+    "pipe_required": false,
+    "placed_targets": 3,
+    "unique_targets_found": 0,
+    "all_placed_targets_found": false,
+    "false_target_reports": 0,
+    "duplicate_target_reports": 0,
+    "official_signals_sent": false,
+    "ordered_stages_completed": [],
+    "ordered_traversal_verified": false,
+    "dead_end_entered": false,
+    "dead_end_exited": false,
+    "rubble_area_visited": false,
+    "pipe_passage_verified": false,
+    "required_pipe": null,
+    "pipe2_floor_contact": false,
+    "course_waypoint_errors_m": [],
+    "obstacle_contact_episodes": 0,
+    "contacts": [],
+    "water_entry_episodes": 0,
+    "out_of_bounds_episodes": 0,
+    "first_terrain_contact": {},
+    "max_base_height_m": 0.33381035225258987,
+    "target_position_errors_m": [],
+    "inside_finish_enclosure": true,
+    "map_anchor_timestamp": 0.6000000000000004,
+    "map_anchor_world_xy": [
+      11.600000532645199,
+      4.791672976917626
+    ],
+    "target_error_p90_m": null,
+    "local_task_pass": false
+  },
+  "official_scene_sha256": "2dd875d238040d9a8616869cb2e30d00abf131b48b89b011af6dc10bd264089c",
+  "not_a_competition_score": true,
+  "full_course_pass": false
+}

@@ -144,7 +144,8 @@ class Perception:
         scale = (target_z - origin[2]) / ray[2]
         center = origin + scale * ray
         distance = np.linalg.norm(center[:2])
-        if scale <= 0 or not .35 <= distance <= self.c.max_range:
+        maximum = min(self.c.max_range,self.c.search_detection_range) if self.c.search_mission else self.c.max_range
+        if scale <= 0 or not .35 <= distance <= maximum:
             return detection
         # The ground-ray hypothesis determines depth independently of apparent
         # size. Use the known football radius only to reject inconsistent wall/

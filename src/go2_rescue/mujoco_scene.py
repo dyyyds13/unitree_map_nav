@@ -14,6 +14,18 @@ def quat(matrix):
     return np.roll(Rotation.from_matrix(matrix).as_quat(), 1)
 
 
+def add_legacy_ball(spec, ball_position):
+    spec.add_texture(name="football_checker", type=mujoco.mjtTexture.mjTEXTURE_2D,
+                     builtin=mujoco.mjtBuiltin.mjBUILTIN_CHECKER, rgb1=[.02, .02, .02],
+                     rgb2=[.92, .92, .9], width=512, height=512)
+    spec.add_material(name="football_pattern", textures=["", "football_checker", "", "", "", "", "", "", "", ""],
+                      texrepeat=[5, 3], specular=.25, roughness=.62)
+    ball = spec.worldbody.add_body(name="local_football", pos=ball_position)
+    ball.add_freejoint(name="local_football_free")
+    ball.add_geom(name="local_football_geom", type=mujoco.mjtGeom.mjGEOM_SPHERE,
+                  size=[.11, 0, 0], mass=.43, material="football_pattern", friction=[.8, .02, .001], condim=3)
+
+
 def task_scene(root: Path, output: Path, spawn: tuple[float, float], layout="finish-area", save_model=True,
                pipe_ramp="official"):
     """Compile a local scene with optional user-authorized ramp relocation.
@@ -31,7 +43,7 @@ def task_scene(root: Path, output: Path, spawn: tuple[float, float], layout="fin
     turn = np.diag([-1., -1., 1.])
     # Mirror the existing ramp to the western mouth by rotating about the
     # measured pipe centre. Compile a fresh model so collision BVHs agree.
-    if layout == "finish-area":
+    if layout in {"finish-area", "rubble-search"}:
         # These named partitions identify the far finish enclosure in this
         # resource revision. Placement is scene setup only, never a nav goal.
         west = source.geom("finish_west_partition_north_continuous_mortar_core").pos[0]
@@ -80,15 +92,18 @@ def task_scene(root: Path, output: Path, spawn: tuple[float, float], layout="fin
                                 priority=int(source.geom_priority[i]), group=3, rgba=source.geom_rgba[i], **extras)
         imported.append(i)
     spec.worldbody.add_light(name="task_light", pos=[3, 3, 7], dir=[0, 0, -1], diffuse=[.8, .8, .8])
-    spec.add_texture(name="football_checker", type=mujoco.mjtTexture.mjTEXTURE_2D,
-                     builtin=mujoco.mjtBuiltin.mjBUILTIN_CHECKER, rgb1=[.02, .02, .02],
-                     rgb2=[.92, .92, .9], width=512, height=512)
-    spec.add_material(name="football_pattern", textures=["", "football_checker", "", "", "", "", "", "", "", ""],
-                      texrepeat=[5, 3], specular=.25, roughness=.62)
-    ball = spec.worldbody.add_body(name="local_football", pos=ball_position)
-    ball.add_freejoint(name="local_football_free")
-    ball.add_geom(name="local_football_geom", type=mujoco.mjtGeom.mjGEOM_SPHERE,
-                  size=[.11, 0, 0], mass=.43, material="football_pattern", friction=[.8, .02, .001], condim=3)
+    if layout == "rubble-search":
+        import json
+        placement = json.loads((root / "configs/rubble-search-layout.json").read_text())
+        football_positions = []
+        for index, xy in enumerate(placement["positions_world_xy"]):
+            child = mujoco.MjSpec.from_file(str(root / placement["model"]))
+            frame = spec.worldbody.add_frame(pos=[*xy, 0.])
+            spec.attach(child, prefix=f"victim_{index}_", frame=frame)
+            football_positions.append([*xy, .11])
+    else:
+        football_positions = [ball_position.tolist()]
+        add_legacy_ball(spec, ball_position)
     marker = cv2.aruco.generateImageMarker(cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_50), 42, 256)
     marker = cv2.copyMakeBorder(marker, 32, 32, 32, 32, cv2.BORDER_CONSTANT, value=255)
     # Raw pixels are embedded in the runtime model; no remote texture required.
@@ -153,9 +168,11 @@ def task_scene(root: Path, output: Path, spawn: tuple[float, float], layout="fin
         "imported_geoms": len(imported),
         "max_geometry_vertex_error_m": max_error,
         "task_layout": layout,
-        "diagnostics_only_placements": {"football_world_xyz": ball_position.tolist(),
+        "diagnostics_only_placements": {"football_world_xyz": ball_position.tolist() if layout != "rubble-search" else None,
+                                         "footballs_world_xyz": football_positions,
                                          "finish_marker_world_xyz": marker_position.tolist()},
-        "additions": ["dynamic football", "local ArUco marker", "light"]}, indent=2) + "\n")
+        "football_source": "life-detection/football/model.xml" if layout == "rubble-search" else "legacy equivalent sphere",
+        "additions": [f"{len(football_positions)} dynamic football(s)", "local ArUco marker", "light"]}, indent=2) + "\n")
     if save_model:
         mujoco.mj_saveModel(model, str(output / "runtime-scene.mjb"))
     return model

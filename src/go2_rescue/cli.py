@@ -127,23 +127,24 @@ def main():
     sim = sub.add_parser("mujoco", help="Original/local MuJoCo scenes + pinned open-source convex MPC")
     sim.add_argument("--output", required=True)
     sim.add_argument("--config")
-    sim.add_argument("--seconds", type=float, default=600., help="Simulation time limit (default600s for ordered course); a finished mission may stop earlier")
+    sim.add_argument("--seconds", type=float, default=600., help="Simulation time limit in (0,1200] seconds (default600s); a finished mission may stop earlier")
     sim.add_argument("--spawn", type=float, nargs=2, default=[.8, .8], metavar=("X", "Y"),
                      help="Initial reset XY; default 0.8 0.8 before the ramp route. Other locations are labelled stage tests")
     sim.add_argument("--spawn-yaw", type=float, default=0., help="Initial heading in radians; scene reset only")
     sim.add_argument("--control", choices=["autonomy", "smoke", "ramp-smoke", "speed-smoke"], default="autonomy")
     sim.add_argument("--max-speed", type=float, help="Forward speed limit in m/s for ordinary walking and narrow passages; overrides config")
     sim.add_argument("--max-reverse-speed", type=float, help="Independent reverse limit in m/s; simulation default .25, overrides config")
-    sim.add_argument("--course-policy", choices=["auto", "ordered", "explore"], default="auto",
-                     help="Ordered fixed-map stages by default; explore is a diagnostic mode")
+    sim.add_argument("--course-policy", choices=["auto", "ordered", "explore", "search"], default="auto",
+                     help="Auto selects search for rubble-search objects, otherwise ordered; explore supports isolated diagnostics")
     sim.add_argument("--course-route", help="Explicit ordered map_start route JSON; never simulator state")
     sim.add_argument("--task-fixture", action="store_true", help="Local football/finish scene; entry-ramp variant by default, --pipe-ramp official preserves source geometry")
     sim.add_argument("--pipe-ramp", choices=["official", "entry"],
                      help="Task fixture ramp layout: entry(default with --task-fixture) moves the exit ramp to the west entrance; official preserves source geometry")
-    sim.add_argument("--task-layout", choices=["finish-area", "near-start"], default="finish-area",
-                     help="Place the task in the far finish area (default); near-start is the old short regression fixture")
+    sim.add_argument("--task-layout", choices=["finish-area", "near-start", "rubble-search"], default="finish-area",
+                     help="Task object layout: far finish ball (default), short near-start fixture, or multiple rubble victims")
     sim.add_argument("--viewer", action="store_true", help="Open MuJoCo interactive viewer")
     sim.add_argument("--hide-camera", action="store_true", help="Hide the default live front-camera inset in the viewer")
+    sim.add_argument("--fast-render", action="store_true", help="Disable shadows/reflections in viewer, camera observations and video (changes image appearance)")
     sim.add_argument("--close-viewer-on-stop", action="store_true", help="Close viewer after the run; by default keep the final scene open")
     sim.add_argument("--realtime", action="store_true")
     sim.add_argument("--record", action="store_true", help="Opt in to raw sensor recording (off by default)")

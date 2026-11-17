@@ -20,13 +20,20 @@ from .recording import Recorder
 from .types import Frame, Step, Velocity
 
 
+def configure_rendering(scene, fast_render=False):
+    """Reduce lighting cost without changing scene geometry or physics."""
+    if fast_render:
+        scene.flags[mujoco.mjtRndFlag.mjRND_SHADOW] = False
+        scene.flags[mujoco.mjtRndFlag.mjRND_REFLECTION] = False
+
+
 class SimSensors:
     """Sensor renderer/raycaster; plant truth is internal to sensor generation.
 
     The public output is Frame, with joint-kinematic measured velocity. It does
     not expose plant qpos, geom IDs, ball coordinates or a precomputed map.
     """
-    def __init__(self, model, data, config: Config, seed=0):
+    def __init__(self, model, data, config: Config, seed=0, fast_render=False):
         self.model, self.data, self.config = model, data, config
         self.base = model.body("base_link").id
         self.rng = np.random.default_rng(seed)
@@ -36,6 +43,7 @@ class SimSensors:
         self.directions = np.array([[np.cos(e) * np.cos(a), np.cos(e) * np.sin(a), np.sin(e)]
                                     for e in elevation for a in azimuth])
         self.renderer = mujoco.Renderer(model, height=240, width=320)
+        configure_rendering(self.renderer.scene, fast_render)
         from OpenGL.GL import glGetString, GL_RENDERER
         self.graphics_device = (glGetString(GL_RENDERER) or b"unknown").decode(errors="replace")
         self.option = mujoco.MjvOption()
@@ -106,7 +114,7 @@ def simulation_config(path=None, task_fixture=False, task_layout="finish-area", 
         c.max_vx = c.passage_max_vx = max_speed
     if max_reverse_speed is not None:
         c.max_reverse_vx = max_reverse_speed
-    c.resolution = .10
+    c.resolution = .10 if path is None else c.resolution
     # Simulator Go2 dimensions are known. Use the body's oriented envelope in
     # DWA; a circumscribed disk plus the old 12cm margin sealed the start lane.
     # Unknown real hardware keeps its original conservative circular defaults.
@@ -126,6 +134,9 @@ def simulation_config(path=None, task_fixture=False, task_layout="finish-area", 
             c.mission_seconds, c.return_reserve = 20., 12.
         else:
             c.mission_seconds, c.return_reserve = 600., 60.
+        if task_layout == "rubble-search":
+            c.target_quota = 0  # Unknown to autonomy; the scene placement file is not read here.
+            c.mission_seconds, c.return_reserve = 1200., 240.
     c.validate()
     return c
 
@@ -222,8 +233,8 @@ def _run_simulation(args):
     output = Path(args.output)
     if output.exists() and any(output.iterdir()):
         raise ValueError("Simulation output must be a new/empty directory")
-    if not np.isfinite(args.seconds) or args.seconds <= 0 or args.seconds > 600:
-        raise ValueError("--seconds must be in (0,600]")
+    if not np.isfinite(args.seconds) or args.seconds <= 0 or args.seconds > 1200:
+        raise ValueError("--seconds must be in (0,1200]")
     if not np.isfinite(args.spawn).all():
         raise ValueError("--spawn must contain finite initial coordinates")
     initial_yaw = getattr(args, "spawn_yaw", 0.)
@@ -242,12 +253,34 @@ def _run_simulation(args):
                                getattr(args, "max_reverse_speed", None))
     course_policy = getattr(args, "course_policy", "auto")
     if course_policy == "auto":
-        course_policy = "explore" if task_layout == "near-start" or args.control != "autonomy" else "ordered"
-    if course_policy == "ordered" and args.control == "autonomy":
+        course_policy = "search" if task_layout == "rubble-search" else "explore" if task_layout == "near-start" or args.control != "autonomy" else "ordered"
+    if course_policy in {"ordered", "search"} and args.control == "autonomy":
         if not np.allclose(args.spawn, [.8, .8], atol=1e-6, rtol=0.) or abs(initial_yaw) > 1e-6:
             raise ValueError("Ordered full course must start at (0.8,0.8), yaw0; stage tests require --course-policy explore")
         default_route = "configs/local-entry-ramp-route.json" if pipe_ramp == "entry" else "configs/official-course-route.json"
+        configured_route = config.course_route
         config.course_route = getattr(args, "course_route", None) or config.course_route or default_route
+        if course_policy == "search":
+            search_route = json.loads((root / "configs/search-route.json").read_text())
+            config.search_mission = True
+            config.target_quota = 0
+            if not config.search_bounds:
+                config.search_bounds = search_route["exploration_bounds"]
+            if args.config is None:
+                config.search_coverage_threshold = search_route["coverage_threshold"]
+            # Manually authored public-map approach from the east,
+            # bypassing the circular pipe. Never includes victim placements.
+            if not config.search_finish_approach:
+                config.search_finish_approach = search_route["finish_approach"]
+                if config.search_finish_gate_yaw is None:
+                    config.search_finish_gate_yaw = search_route["finish_gate_yaw"]
+                if config.search_finish_gate_index is None:
+                    config.search_finish_gate_index = search_route["finish_gate_index"]
+            if not getattr(args, "course_route", None) and not configured_route:
+                config.course_route = search_route["bootstrap_route"] if pipe_ramp == "entry" else default_route
+            if args.config is None:
+                config.mission_seconds = args.seconds
+                config.return_reserve = min(240., .35*args.seconds)
         if args.config is None:
             config.localization_metric = "point_to_line"
             config.imu_heading_reference = True
@@ -272,13 +305,16 @@ def _run_simulation(args):
     data.qpos[3:7] = np.roll(Rotation.from_euler("z", initial_yaw).as_quat(), 1)
     mujoco.mj_forward(model, data)
     controller = ConvexMPC(model, data, root)
-    sensors = SimSensors(model, data, config, args.seed)
+    fast_render = getattr(args, "fast_render", False)
+    sensors = SimSensors(model, data, config, args.seed, fast_render=fast_render)
     autonomy = Autonomy(config)
     config.save(output / "config.json")
     if autonomy.course is not None:
         (output / "ordered-course.json").write_text(json.dumps(autonomy.course.definition, indent=2, ensure_ascii=False)+"\n")
     recorder = Recorder(output / "recording") if args.record else None
     overview = mujoco.Renderer(model, height=480, width=640) if video else None
+    if overview is not None:
+        configure_rendering(overview.scene, fast_render)
     overview_camera = mujoco.MjvCamera()
     overview_camera.distance, overview_camera.azimuth, overview_camera.elevation = 3.8, 140., -30.
     writer = cv2.VideoWriter(str(output / "simulation.mp4"), cv2.VideoWriter_fourcc(*"mp4v"), 10., (960, 480)) if video else None
@@ -288,17 +324,20 @@ def _run_simulation(args):
     if args.viewer:
         from mujoco import viewer as mjviewer
         viewer = mjviewer.launch_passive(model, data)
+        configure_rendering(viewer.user_scn, fast_render)
         viewer.opt.geomgroup[3] = 1
         viewer.cam.distance, viewer.cam.azimuth, viewer.cam.elevation = 4., 140., -30.
     initial = data.qpos[:3].copy()
     from .evaluation import SimulationEvaluator
     official_model = mujoco.MjModel.from_binary_path(str(root / "scene/mujoco/competition-course.mjb"))
     evaluator = SimulationEvaluator(model, official_model, initial[:2], initial_yaw)
+    evaluator.search_mission = config.search_mission
     last_step = Step(Velocity(), controller_pose(), "warming_up", [])
     observations, all_events, history, command_history = 0, [], [], []
     control_times, nav_times, sensor_times, physics_times = [deque(maxlen=10000) for _ in range(4)]
     command, next_nav, next_video, next_physics = Velocity(), .6, 0., 0.
-    next_viewer, front, viewer_syncs = 0., None, 0
+    next_viewer, next_viewer_sim, front, viewer_syncs = 0., 0., None, 0
+    viewer_times = deque(maxlen=10000)
     overlay_key, camera_updates = None, 0
     ticks, fell = 0, False
     start = time.monotonic()
@@ -348,13 +387,17 @@ def _run_simulation(args):
                     evaluator.update(data, last_step.events)
                     if last_step.state != previous_state or t >= next_progress:
                         slope = float(np.rad2deg(np.arctan(np.linalg.norm(controller.terrain_plane[:2]))))
+                        search_status = last_step.diagnostics.get("search", {})
+                        coverage = search_status.get("map_coverage_fraction")
+                        coverage_text = (f" map_coverage={coverage:.1%}/{config.search_coverage_threshold:.0%}"
+                                         if coverage is not None else "")
                         runtime.emit("progress", t,
                                      f"state={last_step.state} reason={last_step.reason or '-'} "
                                      f"cmd=({command.vx:.2f},{command.vy:.2f},{command.wz:.2f}) "
-                                     f"pose_quality={last_step.pose.quality:.2f} terrain_slope={slope:.1f}deg",
+                                     f"pose_quality={last_step.pose.quality:.2f} terrain_slope={slope:.1f}deg{coverage_text}",
                                      state=last_step.state, reason=last_step.reason,
                                      command=asdict(command), pose_quality=last_step.pose.quality,
-                                     observed_support_slope_deg=slope)
+                                     observed_support_slope_deg=slope, search=search_status)
                         previous_state, next_progress = last_step.state, t + 2.
                     for event in last_step.events:
                         runtime.emit("event", t, f"event={event.kind} " + json.dumps(event.payload, ensure_ascii=False),
@@ -412,7 +455,11 @@ def _run_simulation(args):
                     writer.write(canvas)
                     next_video += .1
                 now = time.monotonic()
-                if viewer is not None and now >= next_viewer:
+                # Bound refreshes by both clocks. When rendering is slow, a
+                # wall-only deadline repeatedly syncs nearly identical states
+                # and starves physics. Do not catch up missed display frames.
+                if viewer is not None and now >= next_viewer and data.time + 1e-9 >= next_viewer_sim:
+                    viewer_begin = now
                     viewport = viewer.viewport
                     if viewport is None or not viewer.is_running():
                         status, stop_reason = "viewer_closed", "viewer_closed_by_user"
@@ -429,7 +476,9 @@ def _run_simulation(args):
                             overlay_key, camera_updates = key, camera_updates+1
                     viewer.sync()
                     viewer_syncs += 1
-                    next_viewer = now+1./viewer_fps
+                    next_viewer = time.monotonic()+1./viewer_fps
+                    next_viewer_sim = float(data.time)+1./viewer_fps
+                    viewer_times.append(time.monotonic()-viewer_begin)
                 rpy = Rotation.from_quat(np.roll(data.qpos[3:7], -1)).as_euler("xyz")
                 if data.qpos[2] < .13 or max(abs(rpy[:2])) > .8 or not np.isfinite(data.qpos).all():
                     fell, status = True, "fell"
@@ -483,6 +532,7 @@ def _run_simulation(args):
         summary = {"status": status, "stop_reason": stop_reason,
                    "run_scope": run_scope, "initial_yaw": initial_yaw,
                    "course_policy": course_policy, "ordered_course": None if autonomy.course is None else autonomy.course.diagnostics(),
+                   "search": None if autonomy.search is None else autonomy.search.diagnostics(autonomy.grid),
                    "task_layout": task_layout if args.task_fixture else None,
                    "mission_complete": last_step.state == "finished", "time_limit_seconds": args.seconds,
                    "error": error, "scene": scene_kind, "control": args.control,
@@ -498,9 +548,9 @@ def _run_simulation(args):
                    "recording": {"video": video, "raw": args.record, "physics": save_physics, "snapshots": snapshots},
                    "compute": {"physics": "CPU", "mpc": "CPU", "autonomy": "CPU", "blas_threads": 1,
                                "graphics_device": sensors.graphics_device, "viewer_syncs": viewer_syncs,
-                               "front_camera_updates": camera_updates},
+                               "front_camera_updates": camera_updates, "fast_render": fast_render},
                    "timing_p95_seconds": {name: float(np.quantile(values, .95)) if values else None for name, values in
-                       [("sensors_and_terrain", sensor_times), ("autonomy", nav_times), ("mpc_update", control_times), ("physics_step", physics_times)]},
+                       [("sensors_and_terrain", sensor_times), ("autonomy", nav_times), ("mpc_update", control_times), ("physics_step", physics_times), ("viewer_sync", viewer_times)]},
                    "final_map_resolution_m": config.resolution,
                    "mpc_qp_p95_seconds": float(np.quantile(controller.solve_times, .95)) if controller.solve_times else None,
                    "diagnostics_only": {"initial_world_position": initial.tolist(), "final_world_position": data.qpos[:3].tolist(),
